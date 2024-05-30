@@ -22,7 +22,7 @@ Partial Class Floors
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(Floors))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Floors))
         OSFE = New RadioButton()
         L1 = New Label()
         L2 = New Label()
@@ -53,6 +53,8 @@ Partial Class Floors
         PictureBox1 = New PictureBox()
         Label2 = New Label()
         Label8 = New Label()
+        PN = New Label()
+        DEVTEXT = New Button()
         GroupBox1.SuspendLayout()
         GroupBox2.SuspendLayout()
         GroupBox3.SuspendLayout()
@@ -308,7 +310,7 @@ Partial Class Floors
         ' 
         ' StringBox
         ' 
-        StringBox.Location = New Point(22, 345)
+        StringBox.Location = New Point(18, 352)
         StringBox.Multiline = True
         StringBox.Name = "StringBox"
         StringBox.Size = New Size(406, 128)
@@ -340,13 +342,35 @@ Partial Class Floors
         Label8.Name = "Label8"
         Label8.Size = New Size(168, 45)
         Label8.TabIndex = 19
-        Label8.Text = "It is ok to leave lock locations " & vbCrLf & "empty, if the textbox is empty " & vbCrLf & "the progam will ignore it."
+        Label8.Text = "It is ok to leave lock locations " + vbCrLf + "empty, if the textbox is empty " + vbCrLf + "the progam will ignore it."
+        ' 
+        ' PN
+        ' 
+        PN.AutoSize = True
+        PN.Location = New Point(31, 334)
+        PN.Name = "PN"
+        PN.Size = New Size(41, 15)
+        PN.TabIndex = 20
+        PN.Text = "Label9"
+        PN.Visible = False
+        ' 
+        ' DEVTEXT
+        ' 
+        DEVTEXT.Location = New Point(321, 486)
+        DEVTEXT.Name = "DEVTEXT"
+        DEVTEXT.Size = New Size(89, 35)
+        DEVTEXT.TabIndex = 21
+        DEVTEXT.Text = "Edit String"
+        DEVTEXT.UseVisualStyleBackColor = True
+        DEVTEXT.Visible = False
         ' 
         ' Floors
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1091, 555)
+        Controls.Add(DEVTEXT)
+        Controls.Add(PN)
         Controls.Add(Label8)
         Controls.Add(Label2)
         Controls.Add(PictureBox1)
@@ -405,4 +429,6 @@ Partial Class Floors
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label8 As Label
+    Friend WithEvents PN As Label
+    Friend WithEvents DEVTEXT As Button
 End Class

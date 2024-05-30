@@ -22,7 +22,7 @@ Partial Class Ceilings
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(Ceilings))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Ceilings))
         Label2 = New Label()
         Label1 = New Label()
         PanelWidth = New TextBox()
@@ -51,6 +51,17 @@ Partial Class Ceilings
         QRCode = New PictureBox()
         DEV = New CheckBox()
         Label3 = New Label()
+        Part = New CheckBox()
+        Label4 = New Label()
+        SPL = New CheckBox()
+        SPLWidth = New TextBox()
+        SPLLength = New TextBox()
+        Label5 = New Label()
+        Label6 = New Label()
+        Label7 = New Label()
+        Thickness = New CheckBox()
+        DEVTEXT = New Button()
+        PN = New Label()
         PanelType.SuspendLayout()
         MetalType.SuspendLayout()
         GroupBox1.SuspendLayout()
@@ -286,7 +297,7 @@ Partial Class Ceilings
         ' PictureBox1
         ' 
         PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Image)
-        PictureBox1.Location = New Point(429, 118)
+        PictureBox1.Location = New Point(429, 133)
         PictureBox1.Name = "PictureBox1"
         PictureBox1.Size = New Size(617, 425)
         PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
@@ -321,11 +332,126 @@ Partial Class Ceilings
         Label3.TabIndex = 26
         Label3.Text = "It is ok to leave lock locations " & vbCrLf & "empty, if the textbox is empty " & vbCrLf & "the program will ignore it "
         ' 
+        ' Part
+        ' 
+        Part.AutoSize = True
+        Part.Location = New Point(596, 17)
+        Part.Name = "Part"
+        Part.RightToLeft = RightToLeft.Yes
+        Part.Size = New Size(71, 19)
+        Part.TabIndex = 27
+        Part.Text = "Partition"
+        Part.UseVisualStyleBackColor = True
+        ' 
+        ' Label4
+        ' 
+        Label4.AutoSize = True
+        Label4.Location = New Point(688, 9)
+        Label4.Name = "Label4"
+        Label4.Size = New Size(320, 45)
+        Label4.TabIndex = 28
+        Label4.Text = "Note: For partition Ceilings check this box " & vbCrLf & "and make a Outside Male or Female the partition lenght" & vbCrLf & "Ex. ( STD 4' Partition has a 2' Male side and a 2' Female side)"
+        ' 
+        ' SPL
+        ' 
+        SPL.AutoSize = True
+        SPL.Location = New Point(610, 78)
+        SPL.Name = "SPL"
+        SPL.RightToLeft = RightToLeft.Yes
+        SPL.Size = New Size(57, 19)
+        SPL.TabIndex = 29
+        SPL.Text = "Splice"
+        SPL.UseVisualStyleBackColor = True
+        ' 
+        ' SPLWidth
+        ' 
+        SPLWidth.Enabled = False
+        SPLWidth.Location = New Point(700, 86)
+        SPLWidth.Name = "SPLWidth"
+        SPLWidth.Size = New Size(100, 23)
+        SPLWidth.TabIndex = 30
+        ' 
+        ' SPLLength
+        ' 
+        SPLLength.Enabled = False
+        SPLLength.Location = New Point(847, 86)
+        SPLLength.Name = "SPLLength"
+        SPLLength.Size = New Size(100, 23)
+        SPLLength.TabIndex = 31
+        ' 
+        ' Label5
+        ' 
+        Label5.AutoSize = True
+        Label5.Location = New Point(700, 70)
+        Label5.Name = "Label5"
+        Label5.Size = New Size(71, 15)
+        Label5.TabIndex = 32
+        Label5.Text = "Shear Width"
+        ' 
+        ' Label6
+        ' 
+        Label6.AutoSize = True
+        Label6.Location = New Point(847, 68)
+        Label6.Name = "Label6"
+        Label6.Size = New Size(79, 15)
+        Label6.TabIndex = 33
+        Label6.Text = "Shear Length "
+        ' 
+        ' Label7
+        ' 
+        Label7.AutoSize = True
+        Label7.Location = New Point(688, 112)
+        Label7.Name = "Label7"
+        Label7.Size = New Size(199, 15)
+        Label7.TabIndex = 34
+        Label7.Text = "Note: Horizontal Splices on INT Only"
+        ' 
+        ' Thickness
+        ' 
+        Thickness.AutoSize = True
+        Thickness.Location = New Point(505, 92)
+        Thickness.Name = "Thickness"
+        Thickness.Size = New Size(91, 19)
+        Thickness.TabIndex = 35
+        Thickness.Text = "5"" Thickness"
+        Thickness.UseVisualStyleBackColor = True
+        ' 
+        ' DEVTEXT
+        ' 
+        DEVTEXT.Location = New Point(291, 473)
+        DEVTEXT.Name = "DEVTEXT"
+        DEVTEXT.Size = New Size(95, 38)
+        DEVTEXT.TabIndex = 36
+        DEVTEXT.Text = "Edit String"
+        DEVTEXT.UseVisualStyleBackColor = True
+        DEVTEXT.Visible = False
+        ' 
+        ' PN
+        ' 
+        PN.AutoSize = True
+        PN.Location = New Point(12, 339)
+        PN.Name = "PN"
+        PN.Size = New Size(41, 15)
+        PN.TabIndex = 38
+        PN.Text = "Label8"
+        PN.Visible = False
+        ' 
         ' Ceilings
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1058, 563)
+        Controls.Add(PN)
+        Controls.Add(DEVTEXT)
+        Controls.Add(Thickness)
+        Controls.Add(Label7)
+        Controls.Add(Label6)
+        Controls.Add(Label5)
+        Controls.Add(SPLLength)
+        Controls.Add(SPLWidth)
+        Controls.Add(SPL)
+        Controls.Add(Label4)
+        Controls.Add(Part)
         Controls.Add(Label3)
         Controls.Add(DEV)
         Controls.Add(QRCode)
@@ -381,4 +507,15 @@ Partial Class Ceilings
     Friend WithEvents QRCode As PictureBox
     Friend WithEvents DEV As CheckBox
     Friend WithEvents Label3 As Label
+    Friend WithEvents Part As CheckBox
+    Friend WithEvents Label4 As Label
+    Friend WithEvents SPL As CheckBox
+    Friend WithEvents SPLWidth As TextBox
+    Friend WithEvents SPLLength As TextBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Thickness As CheckBox
+    Friend WithEvents DEVTEXT As Button
+    Friend WithEvents PN As Label
 End Class

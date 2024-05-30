@@ -22,7 +22,7 @@ Partial Class Corners
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(Corners))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Corners))
         Label1 = New Label()
         Label2 = New Label()
         Label3 = New Label()
@@ -61,6 +61,9 @@ Partial Class Corners
         DEV = New CheckBox()
         STD = New CheckBox()
         Label14 = New Label()
+        Thickness = New CheckBox()
+        PN = New Label()
+        DEVTEXT = New Button()
         GroupBox1.SuspendLayout()
         CType(QRCode, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
@@ -297,7 +300,7 @@ Partial Class Corners
         ' 
         ' Button1
         ' 
-        Button1.Location = New Point(347, 285)
+        Button1.Location = New Point(347, 301)
         Button1.Name = "Button1"
         Button1.Size = New Size(136, 47)
         Button1.TabIndex = 28
@@ -306,7 +309,7 @@ Partial Class Corners
         ' 
         ' StringBox
         ' 
-        StringBox.Location = New Point(163, 338)
+        StringBox.Location = New Point(163, 360)
         StringBox.Multiline = True
         StringBox.Name = "StringBox"
         StringBox.Size = New Size(332, 108)
@@ -347,7 +350,7 @@ Partial Class Corners
         ' 
         ' QRCode
         ' 
-        QRCode.Location = New Point(345, 140)
+        QRCode.Location = New Point(345, 164)
         QRCode.Name = "QRCode"
         QRCode.Size = New Size(148, 131)
         QRCode.SizeMode = PictureBoxSizeMode.Zoom
@@ -377,7 +380,7 @@ Partial Class Corners
         ' STD
         ' 
         STD.AutoSize = True
-        STD.Location = New Point(443, 115)
+        STD.Location = New Point(443, 118)
         STD.Name = "STD"
         STD.Size = New Size(85, 19)
         STD.TabIndex = 34
@@ -393,11 +396,44 @@ Partial Class Corners
         Label14.TabIndex = 35
         Label14.Text = "It is ok to leave lock locations empty, " & vbCrLf & "If the textbox is empty the program will ignore it."
         ' 
+        ' Thickness
+        ' 
+        Thickness.AutoSize = True
+        Thickness.Location = New Point(443, 139)
+        Thickness.Name = "Thickness"
+        Thickness.Size = New Size(91, 19)
+        Thickness.TabIndex = 36
+        Thickness.Text = "5"" Thickness"
+        Thickness.UseVisualStyleBackColor = True
+        ' 
+        ' PN
+        ' 
+        PN.AutoSize = True
+        PN.Location = New Point(174, 342)
+        PN.Name = "PN"
+        PN.Size = New Size(47, 15)
+        PN.TabIndex = 37
+        PN.Text = "Label15"
+        PN.Visible = False
+        ' 
+        ' DEVTEXT
+        ' 
+        DEVTEXT.Location = New Point(400, 474)
+        DEVTEXT.Name = "DEVTEXT"
+        DEVTEXT.Size = New Size(83, 36)
+        DEVTEXT.TabIndex = 38
+        DEVTEXT.Text = "Edit String"
+        DEVTEXT.UseVisualStyleBackColor = True
+        DEVTEXT.Visible = False
+        ' 
         ' Corners
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(958, 596)
+        Controls.Add(DEVTEXT)
+        Controls.Add(PN)
+        Controls.Add(Thickness)
         Controls.Add(Label14)
         Controls.Add(STD)
         Controls.Add(DEV)
@@ -482,4 +518,7 @@ Partial Class Corners
     Friend WithEvents DEV As CheckBox
     Friend WithEvents STD As CheckBox
     Friend WithEvents Label14 As Label
+    Friend WithEvents Thickness As CheckBox
+    Friend WithEvents PN As Label
+    Friend WithEvents DEVTEXT As Button
 End Class

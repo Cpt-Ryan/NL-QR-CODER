@@ -1,42 +1,44 @@
-﻿Imports QRCoder
+﻿Imports System.Drawing.Text
+Imports DocumentFormat.OpenXml.Office2010.Word
+Imports QRCoder
 
 Public Class Ceilings
     'This is filtering the UI to hide and show relevant options, good luck decifering 
-    Private Sub OSFE_CheckedChanged(sender As Object, e As EventArgs) Handles OSFE.CheckedChanged
-        If OSFE.Checked Then
-            GroupBox1.Enabled = False
-        End If
+    Private Sub OSFE_CheckedChanged(sender As Object, e As EventArgs) Handles OSFE.CheckedChanged, OSMA.CheckedChanged, CNT.CheckedChanged, INT.CheckedChanged
+        GroupBox1.Enabled = Not EXT.Checked And Not OSFE.Checked
     End Sub
 
     Private Sub EXT_CheckedChanged(sender As Object, e As EventArgs) Handles EXT.CheckedChanged
-        If EXT.Checked Then
-            GroupBox1.Enabled = False
+        GroupBox1.Enabled = Not EXT.Checked
+    End Sub
+    Private Sub SPL_CheckedChanged(sender As Object, e As EventArgs) Handles SPL.CheckedChanged
+        If SPL.Checked Then
+            SPLWidth.Enabled = True
+            SPLLength.Enabled = True
+            Part.Checked = False
+            PanelWidth.Enabled = False
+            PanelLenght.Enabled = False
+            PanelWidth.Text = 24
+            PanelLenght.Text = 72
+            Thickness.Checked = False
+            Thickness.Enabled = False
         Else
-            GroupBox1.Enabled = True
+            SPLWidth.Enabled = False
+            SPLLength.Enabled = False
+            PanelWidth.Enabled = True
+            PanelLenght.Enabled = True
+            PanelWidth.Text = ""
+            PanelLenght.Text = ""
+            Thickness.Enabled = True
         End If
     End Sub
 
-    Private Sub OSMA_CheckedChanged(sender As Object, e As EventArgs) Handles OSMA.CheckedChanged
-        If EXT.Checked Then
-            GroupBox1.Enabled = False
+    Private Sub Part_CheckedChanged(sender As Object, e As EventArgs) Handles Part.CheckedChanged
+        If Part.Checked Then
+            SPL.Checked = False
+            CNT.Enabled = False
         Else
-            GroupBox1.Enabled = True
-        End If
-    End Sub
-
-    Private Sub INT_CheckedChanged(sender As Object, e As EventArgs) Handles INT.CheckedChanged
-        If OSFE.Checked Then
-            GroupBox1.Enabled = False
-        Else
-            GroupBox1.Enabled = True
-        End If
-    End Sub
-
-    Private Sub CNT_CheckedChanged(sender As Object, e As EventArgs) Handles CNT.CheckedChanged
-        If EXT.Checked Then
-            GroupBox1.Enabled = False
-        Else
-            GroupBox1.Enabled = True
+            CNT.Enabled = True
         End If
     End Sub
     'Actually building the string
@@ -44,10 +46,14 @@ Public Class Ceilings
         QRCode.Image = Nothing 'clear any old qr code in box
         Dim PartNumber As String
         PartNumber = InputBox("Please Metal Part Number:", "Input Required")
+        PN.Text = PartNumber
         Dim NomPanelWidth As String = PanelWidth.Text
         Dim NomPanelLength As String = PanelLenght.Text
         Dim ShearPanelWidth As Double
         Dim ShearPanelLenght As Double
+        PN.Visible = True
+        DEVTEXT.Visible = True
+
 
         ' Try to convert NomPanelWidth to a Double
         If Double.TryParse(NomPanelWidth, ShearPanelWidth) Then
@@ -86,6 +92,32 @@ Public Class Ceilings
             Return
         End If
 
+        If Part.Checked Then
+            If INT.Checked Then
+                ShearPanelWidth += 2
+            End If
+        End If
+
+        If Thickness.Checked And INT.Checked Then
+            ShearPanelLenght -= 2
+            ShearPanelWidth -= 1
+        End If
+
+        Dim shearsplWidth As String = SPLWidth.Text
+        Dim shearsplLength As String = SPLLength.Text
+        Dim SpliceWidth As Double
+        Dim SpliceLength As Double
+
+        If SPL.Checked Then
+            ' Attempt to convert the text box values to double
+            If Double.TryParse(shearsplWidth, SpliceWidth) AndAlso Double.TryParse(shearsplLength, SpliceLength) Then
+                ShearPanelWidth = SpliceWidth
+                ShearPanelLenght = SpliceLength
+            Else
+                ' Handle the case where conversion fails, e.g., show a message to the user
+                MessageBox.Show("Please enter valid numeric values for SPL Width and Length.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        End If
 
         '*******************************************Exterior Corner Notches*******************************************************
         Dim EXTXoffset As Double = 0.34375
@@ -201,11 +233,16 @@ Public Class Ceilings
         Dim YValue As Double = 1.6875
         Dim SXoffset As Double = 3.21875
 
+        If Thickness.Checked Then
+            SXoffset = 4.21875
+        End If
+
         Dim S1 As PointF
         Dim S1String As String
 
         If S1x = 0 Then
             S1String = String.Empty
+
         Else
             S1 = New PointF(S1x - SXoffset, YValue)
             S1String = $",L7,{S1.X},{S1.Y}"
@@ -281,7 +318,9 @@ Public Class Ceilings
             Type = "-CNT"
         End If
 
-
+        If Thickness.Checked Then
+            Type = "-5""" & Type
+        End If
 
 
         Dim Constants As String
@@ -290,7 +329,7 @@ Public Class Ceilings
                 Constants = $",Q,1,BL,{ShearPanelLenght},BW,{ShearPanelWidth},PL,{ShearPanelLenght - 0.3125},PW,{ShearPanelWidth - 1.5625},GA,0,GL,0,LB,0,TB,0,FS,2,AS,2"
             Else 'OS Panel and INT checked
                 If OSFE.Checked Then 'OSFE INT
-                    Constants = $",Q,1,BL,{ShearPanelLenght},BW,{ShearPanelWidth},PL,{ShearPanelLenght - 0.3125},PW,{ShearPanelWidth - 0.96875},GA,0,GL,0,LB,0,TB,0,FS,2,AS,1{GhostString},"
+                    Constants = $",Q,1,BL,{ShearPanelLenght},BW,{ShearPanelWidth},PL,{ShearPanelLenght - 0.3125},PW,{ShearPanelWidth - 0.96875},GA,0,GL,0,LB,0,TB,0,FS,2,AS,1{GhostString}"
                 Else 'OSMA INT
                     Constants = $",Q,1,BL,{ShearPanelLenght},BW,{ShearPanelWidth},PL,{ShearPanelLenght - 0.3125},PW,{ShearPanelWidth - 0.96875},GA,0,GL,0,LB,0,TB,0,FS,2,AS,1{GhostString}"
                 End If
@@ -354,5 +393,15 @@ Public Class Ceilings
         Return textBoxValues
     End Function
 
+    Private Sub DEVTEXT_Click(sender As Object, e As EventArgs) Handles DEVTEXT.Click
+        ' Create an instance of the Edit_Text form
+        Dim editTextForm As New Edit_Text()
 
+        ' Pass the data to the Edit_Text form
+        editTextForm.QRString = StringBox.Text
+        editTextForm.PartNumber = PN.Text
+
+        ' Show the Edit_Text form
+        editTextForm.ShowDialog()
+    End Sub
 End Class

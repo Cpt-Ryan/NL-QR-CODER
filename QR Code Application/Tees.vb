@@ -118,6 +118,9 @@
         QRCode.Image = Nothing 'clear any old qr code in box
         Dim PartNumber As String
         PartNumber = InputBox("Please Metal Part Number:", "Input Required")
+        PN.Text = PartNumber
+        PN.Visible = True
+        DEVTEXT.Visible = True
         Dim NomMAleg As String = MALEG.Text
         Dim NomFELeg As String = FELEG.Text
         Dim NomTEELeg As String = TEELength.Text
@@ -528,5 +531,16 @@
         Return textBoxValues
     End Function
 
+    Private Sub DEVTEXT_Click(sender As Object, e As EventArgs) Handles DEVTEXT.Click
+        ' Create an instance of the Edit_Text form
+        Dim editTextForm As New Edit_Text()
+
+        ' Pass the data to the Edit_Text form
+        editTextForm.QRString = StringBox.Text
+        editTextForm.PartNumber = PN.Text
+
+        ' Show the Edit_Text form
+        editTextForm.ShowDialog()
+    End Sub
 
 End Class

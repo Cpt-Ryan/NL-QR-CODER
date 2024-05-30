@@ -23,7 +23,7 @@ Partial Class Walls
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(Walls))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Walls))
         WallWidth = New TextBox()
         Label1 = New Label()
         WallHeight = New TextBox()
@@ -38,7 +38,7 @@ Partial Class Walls
         Label8 = New Label()
         TextBox3 = New TextBox()
         TextBox4 = New TextBox()
-        CheckBox1 = New CheckBox()
+        FBCB = New CheckBox()
         GroupBox1 = New GroupBox()
         Exterior = New RadioButton()
         Interior = New RadioButton()
@@ -70,6 +70,9 @@ Partial Class Walls
         DEV = New CheckBox()
         Button2 = New Button()
         Label10 = New Label()
+        Thickness = New CheckBox()
+        PN = New Label()
+        DEVTEXT = New Button()
         GroupBox1.SuspendLayout()
         GroupBox2.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
@@ -190,15 +193,15 @@ Partial Class Walls
         TextBox4.Size = New Size(100, 23)
         TextBox4.TabIndex = 13
         ' 
-        ' CheckBox1
+        ' FBCB
         ' 
-        CheckBox1.AutoSize = True
-        CheckBox1.Location = New Point(324, 89)
-        CheckBox1.Name = "CheckBox1"
-        CheckBox1.Size = New Size(107, 19)
-        CheckBox1.TabIndex = 14
-        CheckBox1.Text = "Female Bottom"
-        CheckBox1.UseVisualStyleBackColor = True
+        FBCB.AutoSize = True
+        FBCB.Location = New Point(324, 89)
+        FBCB.Name = "FBCB"
+        FBCB.Size = New Size(107, 19)
+        FBCB.TabIndex = 14
+        FBCB.Text = "Female Bottom"
+        FBCB.UseVisualStyleBackColor = True
         ' 
         ' GroupBox1
         ' 
@@ -400,7 +403,7 @@ Partial Class Walls
         ' 
         ' Button1
         ' 
-        Button1.Location = New Point(344, 235)
+        Button1.Location = New Point(344, 232)
         Button1.Name = "Button1"
         Button1.Size = New Size(134, 47)
         Button1.TabIndex = 37
@@ -417,7 +420,7 @@ Partial Class Walls
         ' 
         ' TextBox13
         ' 
-        TextBox13.Location = New Point(337, 300)
+        TextBox13.Location = New Point(337, 309)
         TextBox13.Multiline = True
         TextBox13.Name = "TextBox13"
         TextBox13.Size = New Size(282, 138)
@@ -471,11 +474,44 @@ Partial Class Walls
         Label10.TabIndex = 44
         Label10.Text = "It is ok to leave lock locations empty, " & vbCrLf & "if the textbox is empty the program will ignore it "
         ' 
+        ' Thickness
+        ' 
+        Thickness.AutoSize = True
+        Thickness.Location = New Point(324, 133)
+        Thickness.Name = "Thickness"
+        Thickness.Size = New Size(91, 19)
+        Thickness.TabIndex = 45
+        Thickness.Text = "5"" Thickness"
+        Thickness.UseVisualStyleBackColor = True
+        ' 
+        ' PN
+        ' 
+        PN.AutoSize = True
+        PN.Location = New Point(342, 291)
+        PN.Name = "PN"
+        PN.Size = New Size(47, 15)
+        PN.TabIndex = 46
+        PN.Text = "Label11"
+        PN.Visible = False
+        ' 
+        ' DEVTEXT
+        ' 
+        DEVTEXT.Location = New Point(532, 453)
+        DEVTEXT.Name = "DEVTEXT"
+        DEVTEXT.Size = New Size(87, 34)
+        DEVTEXT.TabIndex = 47
+        DEVTEXT.Text = "Edit String"
+        DEVTEXT.UseVisualStyleBackColor = True
+        DEVTEXT.Visible = False
+        ' 
         ' Walls
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1089, 524)
+        Controls.Add(DEVTEXT)
+        Controls.Add(PN)
+        Controls.Add(Thickness)
         Controls.Add(Label10)
         Controls.Add(Button2)
         Controls.Add(DEV)
@@ -496,7 +532,7 @@ Partial Class Walls
         Controls.Add(S1)
         Controls.Add(Label9)
         Controls.Add(GroupBox1)
-        Controls.Add(CheckBox1)
+        Controls.Add(FBCB)
         Controls.Add(TextBox4)
         Controls.Add(TextBox3)
         Controls.Add(Label8)
@@ -537,7 +573,7 @@ Partial Class Walls
     Friend WithEvents Label8 As Label
     Friend WithEvents TextBox3 As TextBox
     Friend WithEvents TextBox4 As TextBox
-    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents FBCB As CheckBox
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Exterior As RadioButton
     Friend WithEvents Interior As RadioButton
@@ -569,4 +605,7 @@ Partial Class Walls
     Friend WithEvents DEV As CheckBox
     Friend WithEvents Button2 As Button
     Friend WithEvents Label10 As Label
+    Friend WithEvents Thickness As CheckBox
+    Friend WithEvents PN As Label
+    Friend WithEvents DEVTEXT As Button
 End Class

@@ -29,9 +29,14 @@ Module QRCodeModule
                 ' Part number already exists, overwrite the existing row
                 Dim row = partNumberCell.WorksheetRow()
 
+                row.Clear(XLClearOptions.Contents)
+
                 ' Update the hyperlink and text in column A for the existing row
                 row.Cell(1).SetHyperlink(New XLHyperlink(SavePath)) ' Set hyperlink to the QR code image
                 row.Cell(1).Value = "Open QR Code Image" ' Set text for hyperlink
+
+                ' Write the part number in column B
+                row.Cell(2).Value = PartNumber
 
                 ' Split QRString by comma and update the data in the existing row
                 Dim dataItems() As String = QRString.Split(","c)

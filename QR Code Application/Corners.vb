@@ -2,51 +2,47 @@
 
 Public Class Corners
     Private Sub FBCheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles FBCheckBox.CheckedChanged
-        If FBCheckBox.Checked Then
-            TextBox3.Enabled = False
-            TextBox4.Enabled = False
-        Else
-            If EXT.Checked Then
-                TextBox3.Enabled = False
-                TextBox4.Enabled = False
-            Else
-                TextBox3.Enabled = True
-                TextBox4.Enabled = True
-            End If
-
-        End If
-
-
+        Dim enabled As Boolean = Not (FBCheckBox.Checked Or EXT.Checked)
+        TextBox3.Enabled = enabled
+        TextBox4.Enabled = enabled
     End Sub
+
     Private Sub EXT_CheckedChanged(sender As Object, e As EventArgs) Handles EXT.CheckedChanged
-        If EXT.Checked Then
-            TextBox1.Enabled = False
-            TextBox2.Enabled = False
-            TextBox3.Enabled = False
-            TextBox4.Enabled = False
-            TextBox5.Enabled = False
-            TextBox6.Enabled = False
-            TextBox7.Enabled = False
-            TextBox8.Enabled = False
-            FBCheckBox.Checked = False
-            FBCheckBox.Enabled = False
-        Else 'INT checked
-            TextBox1.Enabled = True
-            TextBox2.Enabled = True
-            TextBox3.Enabled = True
-            TextBox4.Enabled = True
-            TextBox5.Enabled = True
-            TextBox6.Enabled = True
-            TextBox7.Enabled = True
-            TextBox8.Enabled = True
-            FBCheckBox.Enabled = True
-        End If
+        Dim enabled As Boolean = Not EXT.Checked
+        EnableTextBoxes(enabled, 1, 8)
+        FBCheckBox.Checked = False
+        FBCheckBox.Enabled = enabled
+    End Sub
+
+    Private Sub EnableTextBoxes(enabled As Boolean, startIdx As Integer, endIdx As Integer)
+        For i As Integer = startIdx To endIdx
+            Dim textBox As TextBox = TryCast(Me.Controls($"TextBox{i}"), TextBox)
+            If textBox IsNot Nothing Then textBox.Enabled = enabled
+        Next
+    End Sub
+
+    Private Sub STD_CheckedChanged(sender As Object, e As EventArgs) Handles STD.CheckedChanged
+        Dim enabled As Boolean = Not STD.Checked
+        SetTextBoxesForSTD(enabled)
+    End Sub
+
+    Private Sub SetTextBoxesForSTD(enabled As Boolean)
+        MaleLeg.Text = If(enabled, "", "12")
+        FemaleLeg.Text = If(enabled, "", "12")
+        TextBox1.Text = If(enabled, "", "6")
+        TextBox2.Enabled = enabled
+        TextBox3.Enabled = enabled
+        TextBox4.Text = If(enabled, "", "6")
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         QRCode.Image = Nothing 'clear any old qr code in box
         Dim PartNumber As String
         PartNumber = InputBox("Please Metal Part Number:", "Input Required")
+        PN.Text = PartNumber
+        PN.Visible = True
+        DEVTEXT.Visible = True
+
 
         Dim MALEG As String = MaleLeg.Text
         Dim FELEG As String = FemaleLeg.Text
@@ -99,6 +95,12 @@ Public Class Corners
             ShearWidth = ShearMALeg + ShearFELeg + 1.4375
         Else 'INT
             ShearWidth = ShearMALeg + ShearFELeg - 6.65625
+        End If
+
+        If Thickness.Checked And INT.Checked Then
+            ShearWidth -= 2
+            ShearMALeg -= 1
+            ShearFELeg -= 1
         End If
 
 
@@ -291,6 +293,16 @@ Public Class Corners
         'StringBox.Text = SideLockString
 
         '**********************************************************String Building********************************************
+        Dim Type As String
+        If FBCheckBox.Checked And Thickness.Checked Then
+            Type = "-5""-FB"
+        ElseIf FBCheckBox.Checked Then
+            Type = "-FB"
+        ElseIf Thickness.Checked Then
+            Type = "-5"""
+        Else
+            Type = ""
+        End If
 
         Dim Constants As String
         Constants = ($",Q,1,BL,{ShearHeight},BW,{ShearWidth},PL,{ShearHeight - 1.125},PW,{ShearWidth - 1.5625},GA,0,GL,0,LB,2,TB,1,FS,2,AS,2")
@@ -298,9 +310,9 @@ Public Class Corners
         Dim QRString As String
         'QRString = (PartNumber & "-Corner" & Constants & TopLockString & SideLockString & BottomLocksString & CNString & CCNString)
         If EXT.Checked Then
-            QRString = (PartNumber & "-EXT-Corner" & Constants & TopLockString & SideLockString & BottomLocksString & CNString & CCNString)
+            QRString = (PartNumber & Type & "-EXT-Corner" & Constants & TopLockString & SideLockString & BottomLocksString & CNString & CCNString)
         ElseIf INT.Checked Then
-            QRString = (PartNumber & "-INT-Corner" & Constants & TopLockString & SideLockString & BottomLocksString & CNString & CCNString)
+            QRString = (PartNumber & Type & "-INT-Corner" & Constants & TopLockString & SideLockString & BottomLocksString & CNString & CCNString)
         End If
 
         StringBox.Text = QRString
@@ -339,23 +351,16 @@ Public Class Corners
         Next
         Return textBoxValues
     End Function
+    Private Sub DEVTEXT_Click(sender As Object, e As EventArgs) Handles DEVTEXT.Click
+        ' Create an instance of the Edit_Text form
+        Dim editTextForm As New Edit_Text()
 
-    Private Sub STD_CheckedChanged(sender As Object, e As EventArgs) Handles STD.CheckedChanged
-        If STD.Checked Then
-            MaleLeg.Text = 12
-            FemaleLeg.Text = 12
-            TextBox1.Text = 6
-            TextBox2.Enabled = False
-            TextBox4.Text = 6
-            TextBox3.Enabled = False
-        Else
-            MaleLeg.Text = ""
-            FemaleLeg.Text = ""
-            TextBox1.Text = ""
-            TextBox2.Enabled = True
-            TextBox4.Text = ""
-            TextBox3.Enabled = True
-        End If
+        ' Pass the data to the Edit_Text form
+        editTextForm.QRString = StringBox.Text
+        editTextForm.PartNumber = PN.Text
 
+        ' Show the Edit_Text form
+        editTextForm.ShowDialog()
     End Sub
+
 End Class

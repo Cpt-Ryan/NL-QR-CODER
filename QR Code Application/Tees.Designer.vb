@@ -22,7 +22,7 @@ Partial Class Tees
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(Tees))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Tees))
         Label1 = New Label()
         Label2 = New Label()
         Label3 = New Label()
@@ -78,6 +78,8 @@ Partial Class Tees
         Button2 = New Button()
         Label22 = New Label()
         STD = New CheckBox()
+        PN = New Label()
+        DEVTEXT = New Button()
         GroupBox1.SuspendLayout()
         GroupBox2.SuspendLayout()
         GroupBox3.SuspendLayout()
@@ -570,11 +572,34 @@ Partial Class Tees
         STD.Text = "STD Tee"
         STD.UseVisualStyleBackColor = True
         ' 
+        ' PN
+        ' 
+        PN.AutoSize = True
+        PN.Location = New Point(387, 405)
+        PN.Name = "PN"
+        PN.Size = New Size(47, 15)
+        PN.TabIndex = 43
+        PN.Text = "Label23"
+        PN.Visible = False
+        ' 
+        ' DEVTEXT
+        ' 
+        DEVTEXT.Location = New Point(598, 556)
+        DEVTEXT.Name = "DEVTEXT"
+        DEVTEXT.Size = New Size(78, 33)
+        DEVTEXT.TabIndex = 44
+        DEVTEXT.Text = "Edit String"
+        DEVTEXT.UseCompatibleTextRendering = True
+        DEVTEXT.UseVisualStyleBackColor = True
+        DEVTEXT.Visible = False
+        ' 
         ' Tees
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1180, 641)
+        Controls.Add(DEVTEXT)
+        Controls.Add(PN)
         Controls.Add(STD)
         Controls.Add(Label22)
         Controls.Add(Button2)
@@ -686,4 +711,6 @@ Partial Class Tees
     Friend WithEvents Button2 As Button
     Friend WithEvents Label22 As Label
     Friend WithEvents STD As CheckBox
+    Friend WithEvents PN As Label
+    Friend WithEvents DEVTEXT As Button
 End Class

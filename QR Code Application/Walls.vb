@@ -5,19 +5,11 @@ Imports System.Windows.Forms
 Public Class Walls
 
 
-    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
-        'This is to make sure they can have bottom locks if Exterior is checked if they choose FB as well
-        If Exterior.Checked Then
-
-        Else
-            If CheckBox1.Checked Then
-                TextBox3.Enabled = False
-                TextBox4.Enabled = False
-
-            Else
-                TextBox3.Enabled = True
-                TextBox4.Enabled = True
-            End If
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles FBCB.CheckedChanged
+        ' This is to make sure they can have bottom locks if Exterior is checked if they choose FB as well
+        If Not Exterior.Checked Then
+            TextBox3.Enabled = Not FBCB.Checked
+            TextBox4.Enabled = Not FBCB.Checked
         End If
     End Sub
 
@@ -34,45 +26,19 @@ Public Class Walls
         TextBox12.Text = TextBox8.Text
     End Sub
     Private Sub Exterior_CheckedChanged(sender As Object, e As EventArgs) Handles Exterior.CheckedChanged
-        If Exterior.Checked Then
-            'Hide all Lock Holes for exterior Radio Button
-            TextBox1.Enabled = False
-            TextBox2.Enabled = False
+        Dim enable As Boolean = Not Exterior.Checked
+        For i As Integer = 1 To 8
+            Dim textBox As TextBox = TryCast(Me.Controls($"TextBox{i}"), TextBox)
+            If textBox IsNot Nothing Then textBox.Enabled = enable
+        Next
+
+        FBCB.Enabled = enable
+        DoubleMaleBox.Enabled = enable
+        GroupBox2.Visible = DoubleMaleBox.Checked And enable
+
+        If FBCB.Checked Then
             TextBox3.Enabled = False
             TextBox4.Enabled = False
-            TextBox5.Enabled = False
-            TextBox6.Enabled = False
-            TextBox7.Enabled = False
-            TextBox8.Enabled = False
-            'Turn off double male and FB functionality for Exterior 
-            CheckBox1.Enabled = False
-            'CheckBox1.Checked = False
-            DoubleMaleBox.Enabled = False
-            If DoubleMaleBox.Checked Then
-                GroupBox2.Visible = False
-            End If
-
-
-        Else
-            'Show lock locations text boxes
-            TextBox1.Enabled = True
-            TextBox2.Enabled = True
-            TextBox3.Enabled = True
-            TextBox4.Enabled = True
-            TextBox5.Enabled = True
-            TextBox6.Enabled = True
-            TextBox7.Enabled = True
-            TextBox8.Enabled = True
-            CheckBox1.Enabled = True
-            DoubleMaleBox.Enabled = False
-            If DoubleMaleBox.Checked Then
-                GroupBox2.Visible = True
-            End If
-
-            If CheckBox1.Checked Then
-                TextBox3.Enabled = False
-                TextBox4.Enabled = False
-            End If
         End If
     End Sub
 
@@ -91,6 +57,10 @@ Public Class Walls
         QRCode.Image = Nothing 'clear any old qr code in box
         Dim PartNumber As String
         PartNumber = InputBox("Please Metal Part Number:", "Input Required")
+        PN.Text = PartNumber
+        PN.Visible = True
+        DEVTEXT.Visible = True
+
 
         '***************************************Panel Size*************************************************************
 
@@ -326,12 +296,24 @@ Public Class Walls
         End If
 
         '*****************************************String Builing*******************************************************
+        Dim Type As String
+
+        If FBCB.Checked And Thickness.Checked Then
+            Type = "-5""-FB"
+        ElseIf FBCB.Checked Then
+            Type = "-FB"
+        ElseIf Thickness.Checked Then
+            Type = "-5"""
+        Else
+            Type = ""
+        End If
+
         Dim AdjustmentConstants As String = $",Q,1,BL,{ShearPanelHeight},BW,{ShearPanelWidth},PL,{ShearPanelHeight - 1.125},PW,{ShearPanelWidth - 1.5625},GA,0,GL,1,LB,2,TB,1,FS,2,AS,2"
         'Ignore the lock text boxes if exterior is checked
         If Exterior.Checked Then
-            QRString = (PartNumber & "-EXT-Wall" & AdjustmentConstants & NotchString)
+            QRString = (PartNumber & Type & "-EXT-Wall" & AdjustmentConstants & NotchString)
         Else
-            QRString = (PartNumber & "-INT-Wall" & AdjustmentConstants & LockString & NotchString)
+            QRString = (PartNumber & Type & "-INT-Wall" & AdjustmentConstants & LockString & NotchString)
 
         End If
 
@@ -387,7 +369,17 @@ Public Class Walls
         Return textBoxValues
     End Function
 
+    Private Sub DEVTEXT_Click(sender As Object, e As EventArgs) Handles DEVTEXT.Click
+        ' Create an instance of the Edit_Text form
+        Dim editTextForm As New Edit_Text()
 
+        ' Pass the data to the Edit_Text form
+        editTextForm.QRString = TextBox13.Text
+        editTextForm.PartNumber = PN.Text
+
+        ' Show the Edit_Text form
+        editTextForm.ShowDialog()
+    End Sub
 
 
 End Class
