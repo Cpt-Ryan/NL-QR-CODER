@@ -163,6 +163,13 @@
             Return
         End If
 
+        If Thickness.Checked And Not EXT.Checked Then
+            ShearFELeg -= 0.5
+            ShearMALeg -= 0.5
+            ShearTEELeg -= 1
+
+        End If
+
         Dim ShearWidth As Double
         If EXT.Checked Then
             ShearWidth = (ShearMALeg + 1.59375) + (ShearFELeg + 1.59375) + 1.53125
@@ -172,6 +179,8 @@
         ElseIf FEINT.Checked Then
             ShearWidth = ShearTEELeg + ShearFELeg + 0.5
         End If
+
+
 
         'StringBox.Text = (ShearWidth & "," & ShearHeight)
 
@@ -223,16 +232,16 @@
 
         If FEINT.Checked Then
             TopCNTNotch = New PointF(-XValue, ShearTEELeg + 0.25)
-            TopNotchString = $",L4,{TopCNTNotch.X},{TopCNTNotch.Y}"
+            TopNotchString = $",R4,{TopCNTNotch.X},{TopCNTNotch.Y}"
 
             BottomCNTNotch = New PointF(ShearHeight + XValue, ShearTEELeg + 0.25)
-            BottomNotchString = $",L4,{BottomCNTNotch.X},{BottomCNTNotch.Y}"
+            BottomNotchString = $",R4,{BottomCNTNotch.X},{BottomCNTNotch.Y}"
         ElseIf MAINT.Checked Then
             TopCNTNotch = New PointF(-XValue, ShearMALeg + 0.25)
-            TopNotchString = $",L4,{TopCNTNotch.X},{TopCNTNotch.Y}"
+            TopNotchString = $",R4,{TopCNTNotch.X},{TopCNTNotch.Y}"
 
             BottomCNTNotch = New PointF(ShearHeight + XValue, ShearMALeg + 0.25)
-            BottomNotchString = $",L4,{BottomCNTNotch.X},{BottomCNTNotch.Y}"
+            BottomNotchString = $",R4,{BottomCNTNotch.X},{BottomCNTNotch.Y}"
         Else ' EXT checked
             TopNotchString = String.Empty
             BottomNotchString = String.Empty
@@ -467,6 +476,10 @@
                 Type = "-EXT-Tee"
             End If
 
+        End If
+
+        If Thickness.Checked Then
+            Type = "-5""" & Type
         End If
 
         Dim QRString As String

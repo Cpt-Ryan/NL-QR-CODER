@@ -80,6 +80,7 @@ Partial Class Tees
         STD = New CheckBox()
         PN = New Label()
         DEVTEXT = New Button()
+        Thickness = New CheckBox()
         GroupBox1.SuspendLayout()
         GroupBox2.SuspendLayout()
         GroupBox3.SuspendLayout()
@@ -565,7 +566,7 @@ Partial Class Tees
         ' STD
         ' 
         STD.AutoSize = True
-        STD.Location = New Point(422, 76)
+        STD.Location = New Point(412, 139)
         STD.Name = "STD"
         STD.Size = New Size(66, 19)
         STD.TabIndex = 42
@@ -593,11 +594,22 @@ Partial Class Tees
         DEVTEXT.UseVisualStyleBackColor = True
         DEVTEXT.Visible = False
         ' 
+        ' Thickness
+        ' 
+        Thickness.AutoSize = True
+        Thickness.Location = New Point(412, 164)
+        Thickness.Name = "Thickness"
+        Thickness.Size = New Size(91, 19)
+        Thickness.TabIndex = 45
+        Thickness.Text = "5"" Thickness"
+        Thickness.UseVisualStyleBackColor = True
+        ' 
         ' Tees
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1180, 641)
+        Controls.Add(Thickness)
         Controls.Add(DEVTEXT)
         Controls.Add(PN)
         Controls.Add(STD)
@@ -713,4 +725,5 @@ Partial Class Tees
     Friend WithEvents STD As CheckBox
     Friend WithEvents PN As Label
     Friend WithEvents DEVTEXT As Button
+    Friend WithEvents Thickness As CheckBox
 End Class
