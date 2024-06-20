@@ -26,13 +26,15 @@ Partial Class Edit_Text
         Button1 = New Button()
         QRCode = New PictureBox()
         DEV = New CheckBox()
+        TextBox2 = New TextBox()
+        Label2 = New Label()
         Label1 = New Label()
         CType(QRCode, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' TextBox1
         ' 
-        TextBox1.Location = New Point(12, 31)
+        TextBox1.Location = New Point(12, 74)
         TextBox1.Multiline = True
         TextBox1.Name = "TextBox1"
         TextBox1.Size = New Size(396, 164)
@@ -66,14 +68,30 @@ Partial Class Edit_Text
         DEV.Text = "DEV Test"
         DEV.UseVisualStyleBackColor = True
         ' 
+        ' TextBox2
+        ' 
+        TextBox2.Location = New Point(12, 27)
+        TextBox2.Name = "TextBox2"
+        TextBox2.Size = New Size(100, 23)
+        TextBox2.TabIndex = 5
+        ' 
+        ' Label2
+        ' 
+        Label2.AutoSize = True
+        Label2.Location = New Point(12, 9)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(75, 15)
+        Label2.TabIndex = 6
+        Label2.Text = "Part Number"
+        ' 
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(16, 13)
+        Label1.Location = New Point(12, 56)
         Label1.Name = "Label1"
-        Label1.Size = New Size(41, 15)
-        Label1.TabIndex = 4
-        Label1.Text = "Label1"
+        Label1.Size = New Size(38, 15)
+        Label1.TabIndex = 7
+        Label1.Text = "String"
         ' 
         ' Edit_Text
         ' 
@@ -81,6 +99,8 @@ Partial Class Edit_Text
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 265)
         Controls.Add(Label1)
+        Controls.Add(Label2)
+        Controls.Add(TextBox2)
         Controls.Add(DEV)
         Controls.Add(QRCode)
         Controls.Add(Button1)
@@ -96,5 +116,7 @@ Partial Class Edit_Text
     Friend WithEvents Button1 As Button
     Friend WithEvents QRCode As PictureBox
     Friend WithEvents DEV As CheckBox
+    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
 End Class

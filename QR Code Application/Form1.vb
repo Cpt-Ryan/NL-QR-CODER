@@ -20,6 +20,10 @@
             Tees.Show()
         End If
 
+        If DEVSTR.Checked Then
+            Edit_Text.Show()
+        End If
+
     End Sub
 
 

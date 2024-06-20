@@ -23,6 +23,7 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         GroupBox1 = New GroupBox()
+        DEVSTR = New RadioButton()
         TeesRB = New RadioButton()
         CornerRB = New RadioButton()
         FloorsRB = New RadioButton()
@@ -34,6 +35,7 @@ Partial Class Form1
         ' 
         ' GroupBox1
         ' 
+        GroupBox1.Controls.Add(DEVSTR)
         GroupBox1.Controls.Add(TeesRB)
         GroupBox1.Controls.Add(CornerRB)
         GroupBox1.Controls.Add(FloorsRB)
@@ -41,10 +43,21 @@ Partial Class Form1
         GroupBox1.Controls.Add(WallsRB)
         GroupBox1.Location = New Point(12, 12)
         GroupBox1.Name = "GroupBox1"
-        GroupBox1.Size = New Size(231, 167)
+        GroupBox1.Size = New Size(244, 179)
         GroupBox1.TabIndex = 0
         GroupBox1.TabStop = False
         GroupBox1.Text = "Panel Type"
+        ' 
+        ' DEVSTR
+        ' 
+        DEVSTR.AutoSize = True
+        DEVSTR.Location = New Point(14, 148)
+        DEVSTR.Name = "DEVSTR"
+        DEVSTR.Size = New Size(93, 19)
+        DEVSTR.TabIndex = 5
+        DEVSTR.TabStop = True
+        DEVSTR.Text = "StringBuilder"
+        DEVSTR.UseVisualStyleBackColor = True
         ' 
         ' TeesRB
         ' 
@@ -114,7 +127,7 @@ Partial Class Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(448, 189)
+        ClientSize = New Size(453, 203)
         Controls.Add(Button1)
         Controls.Add(GroupBox1)
         Name = "Form1"
@@ -131,4 +144,5 @@ Partial Class Form1
     Friend WithEvents Button1 As Button
     Friend WithEvents CornerRB As RadioButton
     Friend WithEvents TeesRB As RadioButton
+    Friend WithEvents DEVSTR As RadioButton
 End Class

@@ -7,9 +7,11 @@ Public Class Edit_Text
     Private Sub Edit_Text_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Use the received data, for example, display it in a TextBox
         TextBox1.Text = QRString
-        Label1.Text = PartNumber
+        TextBox2.Text = PartNumber
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        PartNumber = TextBox2.Text
+        QRString = TextBox1.Text
         If DEV.Checked Then
             Dim qrImage As Bitmap = DEVQRGEN(QRString, PartNumber)
             QRCode.Image = qrImage
