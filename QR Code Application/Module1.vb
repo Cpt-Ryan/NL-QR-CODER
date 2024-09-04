@@ -5,20 +5,26 @@ Imports ClosedXML.Excel
 Module QRCodeModule
 
     Function QRGEN(ByVal QRString As String, ByVal PartNumber As String) As Bitmap
-        Dim baseSavePath As String = ("\\10.10.3.97\Drawing Library\ROLLFORMER QR CODES\QR Codes")
+        Dim baseSavePath As String = ("\\10.10.3.97\drawing_library\ROLLFORMER QR CODES\QR Codes")
+        Dim baseSavePath2 As String = ("Q:\ROLLFORMER QR CODES")
         Dim filename As String = $"{PartNumber}.jpg"
         Dim SavePath As String = System.IO.Path.Combine(baseSavePath, filename)
+        Dim SavePath2 As String = System.IO.Path.Combine(baseSavePath2, filename)
 
         Dim Gen As New QRCodeGenerator()
         Dim Data As QRCodeData = Gen.CreateQrCode(QRString, QRCodeGenerator.ECCLevel.Q)
         Dim Code As New QRCode(Data)
         Dim bm As Bitmap = Code.GetGraphic(6)
 
+        ' Save the QR code image to the first path
         bm.Save(SavePath, Imaging.ImageFormat.Jpeg)
+
+        ' Save the QR code image to the second path
+        bm.Save(SavePath2, Imaging.ImageFormat.Jpeg)
 
         'Writes the String to a excel sheet for record keeping
         ' Now handle the Excel part using ClosedXML
-        Using workbook As New XLWorkbook("\\10.10.3.97\Drawing Library\ROLLFORMER QR CODES\QR Code Strings.xlsm")
+        Using workbook As New XLWorkbook("\\10.10.3.97\drawing_library\ROLLFORMER QR CODES\QR Code Strings.xlsm")
             ' Get reference to the first worksheet in the workbook
             Dim worksheet As IXLWorksheet = workbook.Worksheet(1)
 

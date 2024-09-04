@@ -81,6 +81,7 @@ Partial Class Tees
         PN = New Label()
         DEVTEXT = New Button()
         Thickness = New CheckBox()
+        FBCheck = New CheckBox()
         GroupBox1.SuspendLayout()
         GroupBox2.SuspendLayout()
         GroupBox3.SuspendLayout()
@@ -604,11 +605,22 @@ Partial Class Tees
         Thickness.Text = "5"" Thickness"
         Thickness.UseVisualStyleBackColor = True
         ' 
+        ' FBCheck
+        ' 
+        FBCheck.AutoSize = True
+        FBCheck.Location = New Point(412, 187)
+        FBCheck.Name = "FBCheck"
+        FBCheck.Size = New Size(107, 19)
+        FBCheck.TabIndex = 46
+        FBCheck.Text = "Female Bottom"
+        FBCheck.UseVisualStyleBackColor = True
+        ' 
         ' Tees
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1180, 641)
+        Controls.Add(FBCheck)
         Controls.Add(Thickness)
         Controls.Add(DEVTEXT)
         Controls.Add(PN)
@@ -726,4 +738,5 @@ Partial Class Tees
     Friend WithEvents PN As Label
     Friend WithEvents DEVTEXT As Button
     Friend WithEvents Thickness As CheckBox
+    Friend WithEvents FBCheck As CheckBox
 End Class

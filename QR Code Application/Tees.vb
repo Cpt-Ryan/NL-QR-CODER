@@ -480,6 +480,8 @@
 
         If Thickness.Checked Then
             Type = "-5""" & Type
+        ElseIf FBCheck.Checked Then
+            Type = "-FB" & Type
         End If
 
         Dim QRString As String

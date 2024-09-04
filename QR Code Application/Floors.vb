@@ -269,7 +269,7 @@ Public Class Floors
             If CNT.Checked Then
                 Constants = $",Q,1,BL,{ShearPanelLenght},BW,{ShearPanelWidth},PL,{ShearPanelLenght - 0.3125},PW,{ShearPanelWidth - 0.78125},GA,1,GL,0,LB,0,TB,0,FS,0,AS,0"
             Else 'OS MA or FE
-                Constants = $",Q,1,BL,{ShearPanelLenght},BW,{ShearPanelWidth},PL,{ShearPanelLenght - 0.3125},PW,{ShearPanelWidth - 0.46875},GA,1,GL,0,LB,0,TB,0,FS,0,AS,1"
+                Constants = $",Q,1,BL,{ShearPanelLenght},BW,{ShearPanelWidth},PL,{ShearPanelLenght - 0.3125},PW,{ShearPanelWidth - 1.09375},GA,1,GL,0,LB,0,TB,0,FS,0,AS,1"
             End If
 
         ElseIf EXT.Checked Then
@@ -283,17 +283,17 @@ Public Class Floors
         End If
 
         If INT.Checked Then
-            QRString = (PartNumber & "-INT-Floor" & Constants & SideLockString & INTCornerNotchString)
+            QRString = (PartNumber & "-Floor" & Constants & SideLockString & INTCornerNotchString)
         Else
-            QRString = (PartNumber & "-EXT-Floors" & Constants & EXTCornerNotchString)
+            QRString = (PartNumber & "-Floors" & Constants & EXTCornerNotchString)
         End If
 
         StringBox.Text = (QRString)
 
         If ShearPanelWidth < 12.5 Then
             MessageBox.Show("QR Code not Generated" & vbCrLf & "The Roll Former is unable to form anything with a shear Width smaller than 12.5"". Check BW Value", "Warning")
-        ElseIf ShearPanelLenght > 190.25 Then
-            MessageBox.Show("QR Code not Generated" & vbCrLf & "The Roll Former is unable to feed any piece that is Longer than 16' (190.25""). Check BL Value", "Warning")
+        ElseIf ShearPanelLenght > 192 Then
+            MessageBox.Show("QR Code not Generated" & vbCrLf & "The Roll Former is unable to feed any piece that is Longer than 16' (192""). Check BL Value", "Warning")
         ElseIf DEV.Checked Then
             Dim qrImage As Bitmap = DEVQRGEN(QRString, PartNumber)
             QRCode.Image = qrImage
