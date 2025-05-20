@@ -6,7 +6,7 @@ Module QRCodeModule
 
     Function QRGEN(ByVal QRString As String, ByVal PartNumber As String) As Bitmap
         Dim baseSavePath As String = ("\\10.10.3.97\drawing_library\ROLLFORMER QR CODES\QR Codes")
-        Dim baseSavePath2 As String = ("Q:\ROLLFORMER QR CODES")
+        Dim baseSavePath2 As String = ("\\10.27.1.207\ProdCtl_PDFs\ROLLFORMER QR CODES")
         Dim filename As String = $"{PartNumber}.jpg"
         Dim SavePath As String = System.IO.Path.Combine(baseSavePath, filename)
         Dim SavePath2 As String = System.IO.Path.Combine(baseSavePath2, filename)
