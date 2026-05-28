@@ -76,7 +76,7 @@ Partial Class Ceilings
         Label2.Name = "Label2"
         Label2.Size = New Size(76, 15)
         Label2.TabIndex = 5
-        Label2.Text = "Panel Length"
+        Label2.Text = "Shear Length"
         ' 
         ' Label1
         ' 
@@ -85,7 +85,7 @@ Partial Class Ceilings
         Label1.Name = "Label1"
         Label1.Size = New Size(74, 15)
         Label1.TabIndex = 4
-        Label1.Text = "Panel Width "
+        Label1.Text = "Shear Width"
         ' 
         ' PanelWidth
         ' 

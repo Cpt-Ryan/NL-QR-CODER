@@ -13,16 +13,11 @@ Public Class Floors
             OSMA.Text = "Outside Male"
             OSFE.Text = "Outside Female"
             CNT.Text = "Center"
-            L1.Text = "Panel Width"
-            L2.Text = "Panel Length"
-
         Else
             GroupBox1.Enabled = True
             OSMA.Text = "Outside Male Splice"
             OSFE.Text = "Outside Female Splice"
             CNT.Text = "Center Splice"
-            L1.Text = "Metal Shear Splice Width"
-            L2.Text = "Metal Shear Length"
         End If
     End Sub
 
@@ -62,40 +57,13 @@ Public Class Floors
         Dim ShearPanelWidth As Double
         Dim ShearPanelLenght As Double
 
-        ' Try to convert NomPanelWidth to a Double
-        If Double.TryParse(NomPanelWidth, ShearPanelWidth) Then
-            ' Conversion successful, now add 1.53125 to ShearPanelWidth
-            If EXT.Checked Then 'If EXT checked
-                If OSFE.Checked Or OSMA.Checked Then 'if Outside panel
-                    ShearPanelWidth += 0.40625
-                Else 'if Center Panel
-                    ShearPanelWidth += 1.53125
-                End If
-                'This is adding nothing becuase for int floors We are using the Shear size instead of panel size because of the splicing 
-            Else 'If INT checked
-                If OSFE.Checked Or OSMA.Checked Then 'if Outside panel
-                    ShearPanelWidth -= 0
-                Else 'if Center Panel
-                    ShearPanelWidth += 0
-                End If
-            End If
-        Else
-            ' Conversion failed, show an error message
-            MessageBox.Show("Please enter a valid number for the panel Width.")
+        If Not Double.TryParse(NomPanelWidth, ShearPanelWidth) Then
+            MessageBox.Show("Please enter a valid number for the Shear Width.")
             Return
         End If
 
-        ' Try to convert NomPanelLength to a Double
-        If Double.TryParse(NomPanelLength, ShearPanelLenght) Then
-            ' Conversion successful, now add 1.53125 to ShearPanelWidth
-            If EXT.Checked Then
-                ShearPanelLenght -= 0.6875
-            Else 'If INT checked Still using shear size for INT so no offset 
-                ShearPanelLenght -= 0
-            End If
-        Else
-            ' Conversion failed, show an error message
-            MessageBox.Show("Please enter a valid number for the panel Length.")
+        If Not Double.TryParse(NomPanelLength, ShearPanelLenght) Then
+            MessageBox.Show("Please enter a valid number for the Shear Length.")
             Return
         End If
 

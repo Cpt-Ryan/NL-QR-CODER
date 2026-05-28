@@ -24,6 +24,14 @@ Partial Class Walls
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Walls))
+        FormedWidth = New TextBox()
+        FormedHeight = New TextBox()
+        FormedWidthLabel = New Label()
+        FormedHeightLabel = New Label()
+        CornerXOverlap = New TextBox()
+        CornerYOverlap = New TextBox()
+        CornerXOverlapLabel = New Label()
+        CornerYOverlapLabel = New Label()
         WallWidth = New TextBox()
         Label1 = New Label()
         WallHeight = New TextBox()
@@ -93,7 +101,7 @@ Partial Class Walls
         Label1.Name = "Label1"
         Label1.Size = New Size(74, 15)
         Label1.TabIndex = 1
-        Label1.Text = "Panel Width "
+        Label1.Text = "Shear Width"
         ' 
         ' WallHeight
         ' 
@@ -109,12 +117,76 @@ Partial Class Walls
         Label2.Name = "Label2"
         Label2.Size = New Size(75, 15)
         Label2.TabIndex = 3
-        Label2.Text = "Panel Height"
-        ' 
+        Label2.Text = "Shear Height"
+        '
+        ' CornerXOverlapLabel
+        '
+        CornerXOverlapLabel.AutoSize = True
+        CornerXOverlapLabel.Location = New Point(520, 24)
+        CornerXOverlapLabel.Name = "CornerXOverlapLabel"
+        CornerXOverlapLabel.TabIndex = 52
+        CornerXOverlapLabel.Text = "Corner Notch-X"
+        '
+        ' CornerXOverlap
+        '
+        CornerXOverlap.Location = New Point(520, 47)
+        CornerXOverlap.Name = "CornerXOverlap"
+        CornerXOverlap.Size = New Size(100, 23)
+        CornerXOverlap.TabIndex = 53
+        CornerXOverlap.Text = "0.59375"
+        '
+        ' CornerYOverlapLabel
+        '
+        CornerYOverlapLabel.AutoSize = True
+        CornerYOverlapLabel.Location = New Point(520, 75)
+        CornerYOverlapLabel.Name = "CornerYOverlapLabel"
+        CornerYOverlapLabel.TabIndex = 54
+        CornerYOverlapLabel.Text = "Corner Notch-Y"
+        '
+        ' CornerYOverlap
+        '
+        CornerYOverlap.Location = New Point(520, 95)
+        CornerYOverlap.Name = "CornerYOverlap"
+        CornerYOverlap.Size = New Size(100, 23)
+        CornerYOverlap.TabIndex = 55
+        CornerYOverlap.Text = "0.8125"
+        '
+        ' FormedWidthLabel
+        '
+        FormedWidthLabel.AutoSize = True
+        FormedWidthLabel.Location = New Point(29, 75)
+        FormedWidthLabel.Name = "FormedWidthLabel"
+        FormedWidthLabel.Size = New Size(104, 15)
+        FormedWidthLabel.TabIndex = 48
+        FormedWidthLabel.Text = "Formed Width (PW)"
+        '
+        ' FormedWidth
+        '
+        FormedWidth.Location = New Point(26, 95)
+        FormedWidth.Name = "FormedWidth"
+        FormedWidth.Size = New Size(100, 23)
+        FormedWidth.TabIndex = 49
+        '
+        ' FormedHeightLabel
+        '
+        FormedHeightLabel.AutoSize = True
+        FormedHeightLabel.Location = New Point(155, 75)
+        FormedHeightLabel.Name = "FormedHeightLabel"
+        FormedHeightLabel.Size = New Size(107, 15)
+        FormedHeightLabel.TabIndex = 50
+        FormedHeightLabel.Text = "Formed Height (PL)"
+        '
+        ' FormedHeight
+        '
+        FormedHeight.Location = New Point(155, 95)
+        FormedHeight.Name = "FormedHeight"
+        FormedHeight.Size = New Size(100, 23)
+        FormedHeight.TabIndex = 51
+        '
         ' Label3
-        ' 
+        '
         Label3.AutoSize = True
-        Label3.Location = New Point(29, 89)
+        Label3.Location = New Point(29, 144)
         Label3.Name = "Label3"
         Label3.Size = New Size(59, 15)
         Label3.TabIndex = 4
@@ -123,7 +195,7 @@ Partial Class Walls
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Location = New Point(30, 110)
+        Label4.Location = New Point(30, 165)
         Label4.Name = "Label4"
         Label4.Size = New Size(19, 15)
         Label4.TabIndex = 5
@@ -132,7 +204,7 @@ Partial Class Walls
         ' Label5
         ' 
         Label5.AutoSize = True
-        Label5.Location = New Point(29, 137)
+        Label5.Location = New Point(29, 192)
         Label5.Name = "Label5"
         Label5.Size = New Size(19, 15)
         Label5.TabIndex = 6
@@ -140,14 +212,14 @@ Partial Class Walls
         ' 
         ' TextBox1
         ' 
-        TextBox1.Location = New Point(55, 107)
+        TextBox1.Location = New Point(55, 162)
         TextBox1.Name = "TextBox1"
         TextBox1.Size = New Size(100, 23)
         TextBox1.TabIndex = 7
         ' 
         ' TextBox2
         ' 
-        TextBox2.Location = New Point(55, 134)
+        TextBox2.Location = New Point(55, 189)
         TextBox2.Name = "TextBox2"
         TextBox2.Size = New Size(100, 23)
         TextBox2.TabIndex = 8
@@ -155,7 +227,7 @@ Partial Class Walls
         ' Label6
         ' 
         Label6.AutoSize = True
-        Label6.Location = New Point(30, 182)
+        Label6.Location = New Point(30, 237)
         Label6.Name = "Label6"
         Label6.Size = New Size(80, 15)
         Label6.TabIndex = 9
@@ -164,7 +236,7 @@ Partial Class Walls
         ' Label7
         ' 
         Label7.AutoSize = True
-        Label7.Location = New Point(30, 206)
+        Label7.Location = New Point(30, 261)
         Label7.Name = "Label7"
         Label7.Size = New Size(20, 15)
         Label7.TabIndex = 10
@@ -173,7 +245,7 @@ Partial Class Walls
         ' Label8
         ' 
         Label8.AutoSize = True
-        Label8.Location = New Point(30, 235)
+        Label8.Location = New Point(30, 290)
         Label8.Name = "Label8"
         Label8.Size = New Size(20, 15)
         Label8.TabIndex = 11
@@ -181,14 +253,14 @@ Partial Class Walls
         ' 
         ' TextBox3
         ' 
-        TextBox3.Location = New Point(55, 203)
+        TextBox3.Location = New Point(55, 258)
         TextBox3.Name = "TextBox3"
         TextBox3.Size = New Size(100, 23)
         TextBox3.TabIndex = 12
         ' 
         ' TextBox4
         ' 
-        TextBox4.Location = New Point(55, 232)
+        TextBox4.Location = New Point(55, 287)
         TextBox4.Name = "TextBox4"
         TextBox4.Size = New Size(100, 23)
         TextBox4.TabIndex = 13
@@ -239,7 +311,7 @@ Partial Class Walls
         ' Label9
         ' 
         Label9.AutoSize = True
-        Label9.Location = New Point(30, 283)
+        Label9.Location = New Point(30, 338)
         Label9.Name = "Label9"
         Label9.Size = New Size(65, 15)
         Label9.TabIndex = 16
@@ -248,7 +320,7 @@ Partial Class Walls
         ' S1
         ' 
         S1.AutoSize = True
-        S1.Location = New Point(30, 312)
+        S1.Location = New Point(30, 367)
         S1.Name = "S1"
         S1.Size = New Size(19, 15)
         S1.TabIndex = 17
@@ -257,7 +329,7 @@ Partial Class Walls
         ' S2
         ' 
         S2.AutoSize = True
-        S2.Location = New Point(29, 341)
+        S2.Location = New Point(29, 396)
         S2.Name = "S2"
         S2.Size = New Size(19, 15)
         S2.TabIndex = 18
@@ -266,7 +338,7 @@ Partial Class Walls
         ' S3
         ' 
         S3.AutoSize = True
-        S3.Location = New Point(29, 370)
+        S3.Location = New Point(29, 425)
         S3.Name = "S3"
         S3.Size = New Size(19, 15)
         S3.TabIndex = 19
@@ -275,7 +347,7 @@ Partial Class Walls
         ' S4
         ' 
         S4.AutoSize = True
-        S4.Location = New Point(29, 399)
+        S4.Location = New Point(29, 454)
         S4.Name = "S4"
         S4.Size = New Size(19, 15)
         S4.TabIndex = 20
@@ -283,28 +355,28 @@ Partial Class Walls
         ' 
         ' TextBox5
         ' 
-        TextBox5.Location = New Point(55, 309)
+        TextBox5.Location = New Point(55, 364)
         TextBox5.Name = "TextBox5"
         TextBox5.Size = New Size(100, 23)
         TextBox5.TabIndex = 21
         ' 
         ' TextBox6
         ' 
-        TextBox6.Location = New Point(54, 338)
+        TextBox6.Location = New Point(54, 393)
         TextBox6.Name = "TextBox6"
         TextBox6.Size = New Size(100, 23)
         TextBox6.TabIndex = 22
         ' 
         ' TextBox7
         ' 
-        TextBox7.Location = New Point(54, 367)
+        TextBox7.Location = New Point(54, 422)
         TextBox7.Name = "TextBox7"
         TextBox7.Size = New Size(100, 23)
         TextBox7.TabIndex = 23
         ' 
         ' TextBox8
         ' 
-        TextBox8.Location = New Point(54, 396)
+        TextBox8.Location = New Point(54, 451)
         TextBox8.Name = "TextBox8"
         TextBox8.Size = New Size(100, 23)
         TextBox8.TabIndex = 24
@@ -393,7 +465,7 @@ Partial Class Walls
         GroupBox2.Controls.Add(DMS1)
         GroupBox2.Controls.Add(DMS2)
         GroupBox2.Controls.Add(DMS3)
-        GroupBox2.Location = New Point(161, 283)
+        GroupBox2.Location = New Point(161, 338)
         GroupBox2.Name = "GroupBox2"
         GroupBox2.Size = New Size(170, 155)
         GroupBox2.TabIndex = 36
@@ -403,7 +475,7 @@ Partial Class Walls
         ' 
         ' Button1
         ' 
-        Button1.Location = New Point(344, 232)
+        Button1.Location = New Point(344, 287)
         Button1.Name = "Button1"
         Button1.Size = New Size(134, 47)
         Button1.TabIndex = 37
@@ -420,7 +492,7 @@ Partial Class Walls
         ' 
         ' TextBox13
         ' 
-        TextBox13.Location = New Point(337, 309)
+        TextBox13.Location = New Point(337, 364)
         TextBox13.Multiline = True
         TextBox13.Name = "TextBox13"
         TextBox13.Size = New Size(282, 138)
@@ -448,7 +520,7 @@ Partial Class Walls
         ' DEV
         ' 
         DEV.AutoSize = True
-        DEV.Location = New Point(501, 263)
+        DEV.Location = New Point(501, 318)
         DEV.Name = "DEV"
         DEV.Size = New Size(69, 19)
         DEV.TabIndex = 42
@@ -457,7 +529,7 @@ Partial Class Walls
         ' 
         ' Button2
         ' 
-        Button2.Location = New Point(168, 235)
+        Button2.Location = New Point(168, 290)
         Button2.Name = "Button2"
         Button2.Size = New Size(100, 42)
         Button2.TabIndex = 43
@@ -468,7 +540,7 @@ Partial Class Walls
         ' Label10
         ' 
         Label10.AutoSize = True
-        Label10.Location = New Point(178, 167)
+        Label10.Location = New Point(178, 222)
         Label10.Name = "Label10"
         Label10.Size = New Size(265, 30)
         Label10.TabIndex = 44
@@ -487,7 +559,7 @@ Partial Class Walls
         ' PN
         ' 
         PN.AutoSize = True
-        PN.Location = New Point(342, 291)
+        PN.Location = New Point(342, 346)
         PN.Name = "PN"
         PN.Size = New Size(47, 15)
         PN.TabIndex = 46
@@ -496,7 +568,7 @@ Partial Class Walls
         ' 
         ' DEVTEXT
         ' 
-        DEVTEXT.Location = New Point(532, 453)
+        DEVTEXT.Location = New Point(532, 508)
         DEVTEXT.Name = "DEVTEXT"
         DEVTEXT.Size = New Size(87, 34)
         DEVTEXT.TabIndex = 47
@@ -508,9 +580,17 @@ Partial Class Walls
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1089, 524)
+        ClientSize = New Size(1089, 579)
         Controls.Add(DEVTEXT)
         Controls.Add(PN)
+        Controls.Add(FormedHeight)
+        Controls.Add(FormedWidth)
+        Controls.Add(FormedHeightLabel)
+        Controls.Add(FormedWidthLabel)
+        Controls.Add(CornerYOverlap)
+        Controls.Add(CornerXOverlap)
+        Controls.Add(CornerYOverlapLabel)
+        Controls.Add(CornerXOverlapLabel)
         Controls.Add(Thickness)
         Controls.Add(Label10)
         Controls.Add(Button2)
@@ -608,4 +688,12 @@ Partial Class Walls
     Friend WithEvents Thickness As CheckBox
     Friend WithEvents PN As Label
     Friend WithEvents DEVTEXT As Button
+    Friend WithEvents FormedWidth As TextBox
+    Friend WithEvents FormedHeight As TextBox
+    Friend WithEvents FormedWidthLabel As Label
+    Friend WithEvents FormedHeightLabel As Label
+    Friend WithEvents CornerXOverlap As TextBox
+    Friend WithEvents CornerYOverlap As TextBox
+    Friend WithEvents CornerXOverlapLabel As Label
+    Friend WithEvents CornerYOverlapLabel As Label
 End Class

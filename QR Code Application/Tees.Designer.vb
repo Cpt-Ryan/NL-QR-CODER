@@ -114,7 +114,7 @@ Partial Class Tees
         Label3.Name = "Label3"
         Label3.Size = New Size(75, 15)
         Label3.TabIndex = 2
-        Label3.Text = "Panel Height"
+        Label3.Text = "Shear Height"
         ' 
         ' Label4
         ' 

@@ -79,7 +79,7 @@ Partial Class Floors
         L1.Name = "L1"
         L1.Size = New Size(138, 15)
         L1.TabIndex = 1
-        L1.Text = "Metal Shear Splice Width"
+        L1.Text = "Shear Width"
         ' 
         ' L2
         ' 
@@ -88,7 +88,7 @@ Partial Class Floors
         L2.Name = "L2"
         L2.Size = New Size(112, 15)
         L2.TabIndex = 2
-        L2.Text = "Metal Shear Length "
+        L2.Text = "Shear Length"
         ' 
         ' Label3
         ' 
@@ -333,7 +333,7 @@ Partial Class Floors
         Label2.Name = "Label2"
         Label2.Size = New Size(325, 15)
         Label2.TabIndex = 18
-        Label2.Text = "Note: INT splices are a shear size input not a Panel size input."
+        Label2.Text = "All inputs are shear size."
         ' 
         ' Label8
         ' 

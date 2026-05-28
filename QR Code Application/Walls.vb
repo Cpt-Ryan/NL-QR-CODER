@@ -69,30 +69,44 @@ Public Class Walls
         Dim QRString As String
         Dim ShearPanelWidth As Double
         Dim ShearPanelHeight As Double
+        Dim FormedPanelWidth As Double
+        Dim FormedPanelHeight As Double
 
-        ' Try to convert NomPanelWidthAsString to a Double
-        If Double.TryParse(NomPanelWidthAsString, ShearPanelWidth) Then
-            ' Conversion successful, now add 1.53125 to ShearPanelWidth
-            ShearPanelWidth += 1.53125
-        Else
-            ' Conversion failed, show an error message
-            MessageBox.Show("Please enter a valid number for the panel Width.")
+        If Not Double.TryParse(NomPanelWidthAsString, ShearPanelWidth) Then
+            MessageBox.Show("Please enter a valid number for the Shear Width (BW).")
             Return
         End If
 
-        ' Try to convert NomPanelWidthAsString to a Double
-        If Double.TryParse(NomPanelHeightAsString, ShearPanelHeight) Then
-            ' Conversion successful, now add 1.03125 to ShearPanelHeight
-            ShearPanelHeight += 1.03125
-        Else
-            ' Conversion failed, show an error message
-            MessageBox.Show("Please enter a valid number for the panel Height.")
+        If Not Double.TryParse(NomPanelHeightAsString, ShearPanelHeight) Then
+            MessageBox.Show("Please enter a valid number for the Shear Height (BL).")
+            Return
+        End If
+
+        If Not Double.TryParse(FormedWidth.Text, FormedPanelWidth) Then
+            MessageBox.Show("Please enter a valid number for the Formed Width (PW).")
+            Return
+        End If
+
+        If Not Double.TryParse(FormedHeight.Text, FormedPanelHeight) Then
+            MessageBox.Show("Please enter a valid number for the Formed Height (PL).")
             Return
         End If
 
 
         '*****************************************Corner Punches******************************************************
 
+        Dim CornerXOverlapVal As Double
+        Dim CornerYOverlapVal As Double
+
+        If Not Double.TryParse(CornerXOverlap.Text, CornerXOverlapVal) Then
+            MessageBox.Show("Please enter a valid number for Corner Notch-X.")
+            Return
+        End If
+
+        If Not Double.TryParse(CornerYOverlap.Text, CornerYOverlapVal) Then
+            MessageBox.Show("Please enter a valid number for Corner Notch-Y.")
+            Return
+        End If
 
         Dim CornerNotch1 As PointF
         Dim CornerNotch1String As String
@@ -102,8 +116,8 @@ Public Class Walls
         Dim CornerNotch3String As String
         Dim CornerNotch4 As PointF
         Dim CornerNotch4String As String
-        Dim Xcorneroffset As Double = 0.03125
-        Dim Ycorneroffset As Double = 0.1875
+        Dim Xcorneroffset As Double = 0.625 - CornerXOverlapVal
+        Dim Ycorneroffset As Double = CornerYOverlapVal - 0.625
 
         'Origin (bottom)
         CornerNotch1 = New PointF(0 - Xcorneroffset, Ycorneroffset)
@@ -308,7 +322,7 @@ Public Class Walls
             Type = ""
         End If
 
-        Dim AdjustmentConstants As String = $",Q,1,BL,{ShearPanelHeight},BW,{ShearPanelWidth},PL,{ShearPanelHeight - 1.125},PW,{ShearPanelWidth - 1.5625},GA,0,GL,1,LB,2,TB,1,FS,2,AS,2"
+        Dim AdjustmentConstants As String = $",Q,1,BL,{ShearPanelHeight},BW,{ShearPanelWidth},PL,{FormedPanelHeight},PW,{FormedPanelWidth},GA,0,GL,1,LB,2,TB,1,FS,2,AS,2"
         'Ignore the lock text boxes if exterior is checked
         If Exterior.Checked Then
             QRString = (PartNumber & Type & "-EXT-Wall" & AdjustmentConstants & NotchString)

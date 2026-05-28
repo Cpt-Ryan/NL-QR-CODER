@@ -55,40 +55,13 @@ Public Class Ceilings
         DEVTEXT.Visible = True
 
 
-        ' Try to convert NomPanelWidth to a Double
-        If Double.TryParse(NomPanelWidth, ShearPanelWidth) Then
-            ' Conversion successful, now add 1.53125 to ShearPanelWidth
-            If EXT.Checked Then 'If EXT checked
-                If OSFE.Checked Or OSMA.Checked Then 'if Outside panel
-                    ShearPanelWidth += 0.40625
-                Else 'if Center Panel
-                    ShearPanelWidth += 1.53125
-                End If
-
-            Else 'If INT checked
-                If OSFE.Checked Or OSMA.Checked Then 'if Outside panel
-                    ShearPanelWidth -= 2.4375
-                Else 'if Center Panel
-                    ShearPanelWidth += 1.53125
-                End If
-            End If
-        Else
-            ' Conversion failed, show an error message
-            MessageBox.Show("Please enter a valid number for the panel Width.")
+        If Not Double.TryParse(NomPanelWidth, ShearPanelWidth) Then
+            MessageBox.Show("Please enter a valid number for the Shear Width.")
             Return
         End If
 
-        ' Try to convert NomPanelLength to a Double
-        If Double.TryParse(NomPanelLength, ShearPanelLenght) Then
-            ' Conversion successful, now add 1.53125 to ShearPanelWidth
-            If EXT.Checked Then
-                ShearPanelLenght -= 0.6875
-            Else 'If INT checked
-                ShearPanelLenght -= 6.4375
-            End If
-        Else
-            ' Conversion failed, show an error message
-            MessageBox.Show("Please enter a valid number for the panel Length.")
+        If Not Double.TryParse(NomPanelLength, ShearPanelLenght) Then
+            MessageBox.Show("Please enter a valid number for the Shear Length.")
             Return
         End If
 

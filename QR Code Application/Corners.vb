@@ -51,42 +51,18 @@ Public Class Corners
         Dim ShearFELeg As Double
         Dim ShearHeight As Double
 
-        ' Try to convert MALEG to a Double
-        If Double.TryParse(MALEG, ShearMALeg) Then
-
-            If EXT.Checked Then 'If EXT checked
-                ShearMALeg += 0
-
-            Else 'If INT checked
-                ShearMALeg += 0
-            End If
-        Else
-            ' Conversion failed, show an error message
-            MessageBox.Show("Please enter a valid number Male Leg Length.")
+        If Not Double.TryParse(MALEG, ShearMALeg) Then
+            MessageBox.Show("Please enter a valid number for the Male Leg Shear Length.")
             Return
         End If
 
-        ' Try to convert FELEG to a Double
-        If Double.TryParse(FELEG, ShearFELeg) Then
-
-            If EXT.Checked Then 'If EXT checked
-                ShearFELeg += 0
-
-            Else 'If INT checked
-                ShearFELeg += 0
-            End If
-        Else
-            ' Conversion failed, show an error message
-            MessageBox.Show("Please enter a valid number Female Leg Length.")
+        If Not Double.TryParse(FELEG, ShearFELeg) Then
+            MessageBox.Show("Please enter a valid number for the Female Leg Shear Length.")
             Return
         End If
 
-        ' Try to convert Height to a Double
-        If Double.TryParse(Height, ShearHeight) Then
-            ShearHeight += 1.03125
-        Else
-            ' Conversion failed, show an error message
-            MessageBox.Show("Please enter a valid number Panel Height.")
+        If Not Double.TryParse(Height, ShearHeight) Then
+            MessageBox.Show("Please enter a valid number for the Shear Height.")
             Return
         End If
 

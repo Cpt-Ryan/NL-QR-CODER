@@ -130,36 +130,23 @@
         Dim ShearFELeg As Double
         Dim ShearTEELeg As Double
 
-        ' Try to convert to a Double
-        If Double.TryParse(NomMAleg, ShearMALeg) Then
-            ShearMALeg -= 1.59375
-        Else
-            ' Conversion failed, show an error message
-            MessageBox.Show("Please enter a valid Male Leg Length")
+        If Not Double.TryParse(NomMAleg, ShearMALeg) Then
+            MessageBox.Show("Please enter a valid Male Leg Shear Length")
             Return
         End If
 
-        If Double.TryParse(NomFELeg, ShearFELeg) Then
-            ShearFELeg -= 1.59375
-        Else
-            ' Conversion failed, show an error message
-            MessageBox.Show("Please enter a valid Female Leg Length")
+        If Not Double.TryParse(NomFELeg, ShearFELeg) Then
+            MessageBox.Show("Please enter a valid Female Leg Shear Length")
             Return
         End If
 
-        If Double.TryParse(NomTEELeg, ShearTEELeg) Then
-            ShearTEELeg -= 3.5625
-        Else
-            ' Conversion failed, show an error message
-            MessageBox.Show("Please enter a valid Tee Leg Length")
+        If Not Double.TryParse(NomTEELeg, ShearTEELeg) Then
+            MessageBox.Show("Please enter a valid Tee Leg Shear Length")
             Return
         End If
 
-        If Double.TryParse(NomPanelHeight, ShearHeight) Then
-            ShearHeight += 1.03125
-        Else
-            ' Conversion failed, show an error message
-            MessageBox.Show("Please enter a valid Panel Height")
+        If Not Double.TryParse(NomPanelHeight, ShearHeight) Then
+            MessageBox.Show("Please enter a valid Shear Height")
             Return
         End If
 
