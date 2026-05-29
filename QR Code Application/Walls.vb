@@ -163,9 +163,7 @@ Public Class Walls
         Dim DMS4x As Double = convertedValues("TextBox12")
 
         'Top Locks and Bottom Locks
-        Dim TXoffset As Double = 1.4375
-        Dim TYoffset As Double = 0.8125
-        Dim Byoffset As Double = 0.71875
+        Dim TXoffset As Double = CornerXOverlapVal + 0.84375
         Dim T1String As String
 
         'T1
@@ -173,10 +171,10 @@ Public Class Walls
         If T1y = 0 Then
             T1String = String.Empty
         ElseIf T1y > 19 Then 'Making sure the Left Side wont try and reach to far 
-            Dim T1 As PointF = New PointF(TXoffset, T1y + TYoffset)
+            Dim T1 As PointF = New PointF(TXoffset, T1y)
             T1String = $",R7,{T1.X},{T1.Y}"
         Else
-            Dim T1 As PointF = New PointF(TXoffset, T1y + TYoffset)
+            Dim T1 As PointF = New PointF(TXoffset, T1y)
             T1String = $",L7,{T1.X},{T1.Y}"
         End If
 
@@ -186,10 +184,10 @@ Public Class Walls
         If T2y = 0 Then
             T2String = String.Empty
         ElseIf T2y < 19 Then 'Making sure the Right Side wont colide with left side
-            Dim T2 As PointF = New PointF(TXoffset, T2y + TYoffset)
+            Dim T2 As PointF = New PointF(TXoffset, T2y)
             T2String = $",L7,{T2.X},{T2.Y}"
         Else
-            Dim T2 As PointF = New PointF(TXoffset, T2y + TYoffset)
+            Dim T2 As PointF = New PointF(TXoffset, T2y)
             T2String = $",R7,{T2.X},{T2.Y}"
         End If
 
@@ -202,10 +200,10 @@ Public Class Walls
         If B1y = 0 Then
             B1String = String.Empty
         ElseIf B1y > 19 Then 'Making sure the Left Side wont try and reach to far 
-            Dim B1 As PointF = New PointF(ShearPanelHeight - TXoffset, B1y + Byoffset)
+            Dim B1 As PointF = New PointF(ShearPanelHeight - TXoffset, ShearPanelWidth - B1y)
             B1String = $",R7,{B1.X},{B1.Y}"
         Else
-            Dim B1 As PointF = New PointF(ShearPanelHeight - TXoffset, B1y + Byoffset)
+            Dim B1 As PointF = New PointF(ShearPanelHeight - TXoffset, ShearPanelWidth - B1y)
             B1String = $",L7,{B1.X},{B1.Y}"
         End If
 
@@ -214,10 +212,10 @@ Public Class Walls
         If B2y = 0 Then
             B2String = String.Empty
         ElseIf B2y < 19 Then 'Making sure the Right side will not colide the left side
-            Dim B2 As PointF = New PointF(ShearPanelHeight - TXoffset, B2y + Byoffset)
+            Dim B2 As PointF = New PointF(ShearPanelHeight - TXoffset, ShearPanelWidth - B2y)
             B2String = $",L7,{B2.X},{B2.Y}"
         Else
-            Dim B2 As PointF = New PointF(ShearPanelHeight - TXoffset, B2y + Byoffset)
+            Dim B2 As PointF = New PointF(ShearPanelHeight - TXoffset, ShearPanelWidth - B2y)
             B2String = $",R7,{B2.X},{B2.Y}"
         End If
 
@@ -225,14 +223,14 @@ Public Class Walls
 
         '*****************************Side Locks****************
 
-        Dim SYoffset = 1.6875
-        Dim Sxoffset = 0.5
+        Dim SYoffset = CornerYOverlapVal + 0.8125
+        Dim Sxoffset = CornerXOverlapVal
         'S1
         Dim S1String As String
         If S1x = 0 Then
             S1String = String.Empty
         Else
-            Dim S1 As PointF = New PointF(S1x + Sxoffset, SYoffset)
+            Dim S1 As PointF = New PointF(S1x, SYoffset)
             S1String = $",L7,{S1.X},{S1.Y}"
         End If
 
@@ -241,7 +239,7 @@ Public Class Walls
         If S2x = 0 Then
             S2String = String.Empty
         Else
-            Dim S2 As PointF = New PointF(S2x + Sxoffset, SYoffset)
+            Dim S2 As PointF = New PointF(S2x, SYoffset)
             S2String = $",L7,{S2.X},{S2.Y}"
         End If
 
@@ -250,7 +248,7 @@ Public Class Walls
         If S3x = 0 Then
             S3String = String.Empty
         Else
-            Dim S3 As PointF = New PointF(S3x + Sxoffset, SYoffset)
+            Dim S3 As PointF = New PointF(S3x, SYoffset)
             S3String = $",L7,{S3.X},{S3.Y}"
         End If
 
@@ -259,7 +257,7 @@ Public Class Walls
         If S4x = 0 Then
             S4String = String.Empty
         Else
-            Dim S4 As PointF = New PointF(S4x + Sxoffset, SYoffset)
+            Dim S4 As PointF = New PointF(S4x, SYoffset)
             S4String = $",L7,{S4.X},{S4.Y}"
         End If
 
@@ -271,7 +269,7 @@ Public Class Walls
         If DMS1x = 0 Then
             DMS1String = String.Empty
         Else
-            Dim DMS1 As PointF = New PointF(DMS1x + Sxoffset, ShearPanelWidth - SYoffset)
+            Dim DMS1 As PointF = New PointF(DMS1x, ShearPanelWidth - SYoffset)
             DMS1String = $",R7,{DMS1.X},{DMS1.Y}"
         End If
 
@@ -280,7 +278,7 @@ Public Class Walls
         If DMS2x = 0 Then
             DMS2String = String.Empty
         Else
-            Dim DMS2 As PointF = New PointF(DMS2x + Sxoffset, ShearPanelWidth - SYoffset)
+            Dim DMS2 As PointF = New PointF(DMS2x, ShearPanelWidth - SYoffset)
             DMS2String = $",R7,{DMS2.X},{DMS2.Y}"
         End If
 
@@ -289,7 +287,7 @@ Public Class Walls
         If DMS3x = 0 Then
             DMS3String = String.Empty
         Else
-            Dim DMS3 As PointF = New PointF(DMS3x + Sxoffset, ShearPanelWidth - SYoffset)
+            Dim DMS3 As PointF = New PointF(DMS3x, ShearPanelWidth - SYoffset)
             DMS3String = $",R7,{DMS3.X},{DMS3.Y}"
         End If
 
@@ -298,7 +296,7 @@ Public Class Walls
         If DMS4x = 0 Then
             DMS4String = String.Empty
         Else
-            Dim DMS4 As PointF = New PointF(DMS4x + Sxoffset, ShearPanelWidth - SYoffset)
+            Dim DMS4 As PointF = New PointF(DMS4x, ShearPanelWidth - SYoffset)
             DMS4String = $",R7,{DMS4.X},{DMS4.Y}"
         End If
 

@@ -190,7 +190,7 @@ Partial Class Walls
         Label3.Name = "Label3"
         Label3.Size = New Size(59, 15)
         Label3.TabIndex = 4
-        Label3.Text = "Top Locks"
+        Label3.Text = "Top Locks (Flat Y)"
         ' 
         ' Label4
         ' 
@@ -231,7 +231,7 @@ Partial Class Walls
         Label6.Name = "Label6"
         Label6.Size = New Size(80, 15)
         Label6.TabIndex = 9
-        Label6.Text = "Bottom Locks"
+        Label6.Text = "Bottom Locks (Flat Y)"
         ' 
         ' Label7
         ' 
@@ -315,7 +315,7 @@ Partial Class Walls
         Label9.Name = "Label9"
         Label9.Size = New Size(65, 15)
         Label9.TabIndex = 16
-        Label9.Text = "Side Locks "
+        Label9.Text = "Side Locks (Flat X)"
         ' 
         ' S1
         ' 
