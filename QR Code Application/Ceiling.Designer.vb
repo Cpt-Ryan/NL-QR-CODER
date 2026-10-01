@@ -1,4 +1,4 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class Ceilings
     Inherits System.Windows.Forms.Form
 
@@ -49,6 +49,7 @@ Partial Class Ceilings
         StringBox = New TextBox()
         PictureBox1 = New PictureBox()
         QRCode = New PictureBox()
+        SoftPartCheckBox = New CheckBox()
         DEV = New CheckBox()
         Label3 = New Label()
         Part = New CheckBox()
@@ -315,6 +316,15 @@ Partial Class Ceilings
         ' 
         ' DEV
         ' 
+        SoftPartCheckBox.AutoSize = True
+        SoftPartCheckBox.Checked = True
+        SoftPartCheckBox.CheckState = CheckState.Checked
+        SoftPartCheckBox.Location = New Point(345, 292)
+        SoftPartCheckBox.Name = "SoftPartCheckBox"
+        SoftPartCheckBox.Size = New Size(80, 24)
+        SoftPartCheckBox.TabIndex = 99
+        SoftPartCheckBox.Text = "Soft Part"
+        SoftPartCheckBox.UseVisualStyleBackColor = True
         DEV.AutoSize = True
         DEV.Location = New Point(345, 320)
         DEV.Name = "DEV"
@@ -453,6 +463,7 @@ Partial Class Ceilings
         Controls.Add(Label4)
         Controls.Add(Part)
         Controls.Add(Label3)
+        Controls.Add(SoftPartCheckBox)
         Controls.Add(DEV)
         Controls.Add(QRCode)
         Controls.Add(PictureBox1)
@@ -505,6 +516,7 @@ Partial Class Ceilings
     Friend WithEvents StringBox As TextBox
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents QRCode As PictureBox
+    Friend WithEvents SoftPartCheckBox As CheckBox
     Friend WithEvents DEV As CheckBox
     Friend WithEvents Label3 As Label
     Friend WithEvents Part As CheckBox

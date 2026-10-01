@@ -1,4 +1,4 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class Corners
     Inherits System.Windows.Forms.Form
 
@@ -58,6 +58,7 @@ Partial Class Corners
         INT = New RadioButton()
         QRCode = New PictureBox()
         PictureBox1 = New PictureBox()
+        SoftPartCheckBox = New CheckBox()
         DEV = New CheckBox()
         STD = New CheckBox()
         Label14 = New Label()
@@ -369,6 +370,15 @@ Partial Class Corners
         ' 
         ' DEV
         ' 
+        SoftPartCheckBox.AutoSize = True
+        SoftPartCheckBox.Checked = True
+        SoftPartCheckBox.CheckState = CheckState.Checked
+        SoftPartCheckBox.Location = New Point(200, 301)
+        SoftPartCheckBox.Name = "SoftPartCheckBox"
+        SoftPartCheckBox.Size = New Size(80, 24)
+        SoftPartCheckBox.TabIndex = 99
+        SoftPartCheckBox.Text = "Soft Part"
+        SoftPartCheckBox.UseVisualStyleBackColor = True
         DEV.AutoSize = True
         DEV.Location = New Point(489, 313)
         DEV.Name = "DEV"
@@ -436,6 +446,7 @@ Partial Class Corners
         Controls.Add(Thickness)
         Controls.Add(Label14)
         Controls.Add(STD)
+        Controls.Add(SoftPartCheckBox)
         Controls.Add(DEV)
         Controls.Add(PictureBox1)
         Controls.Add(QRCode)
@@ -515,6 +526,7 @@ Partial Class Corners
     Friend WithEvents INT As RadioButton
     Friend WithEvents QRCode As PictureBox
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents SoftPartCheckBox As CheckBox
     Friend WithEvents DEV As CheckBox
     Friend WithEvents STD As CheckBox
     Friend WithEvents Label14 As Label

@@ -1,4 +1,4 @@
-﻿Imports System.Windows.Forms.VisualStyles
+Imports System.Windows.Forms.VisualStyles
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement.Button
 Imports System.Windows.Forms
 
@@ -56,7 +56,16 @@ Public Class Walls
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         QRCode.Image = Nothing 'clear any old qr code in box
         Dim PartNumber As String
+        Dim FoamDate As Date? = Nothing
+        Dim isSoftPart As Boolean = SoftPartCheckBox.Checked
         PartNumber = InputBox("Please Metal Part Number:", "Input Required")
+        If String.IsNullOrWhiteSpace(PartNumber) Then Return
+        If isSoftPart Then
+            Using dateDialog As New FoamDateDialog()
+                If dateDialog.ShowDialog(Me) <> DialogResult.OK Then Return
+                FoamDate = dateDialog.SelectedDate
+            End Using
+        End If
         PN.Text = PartNumber
         PN.Visible = True
         DEVTEXT.Visible = True
@@ -339,8 +348,14 @@ Public Class Walls
             Dim qrImage As Bitmap = DEVQRGEN(QRString, PartNumber)
             QRCode.Image = qrImage
         Else
-            Dim qrImage As Bitmap = QRGEN(QRString, PartNumber)
-            QRCode.Image = qrImage
+            Try
+                Dim qrImage As Bitmap = QRGEN(QRString, PartNumber, FoamDate, isSoftPart)
+                QRCode.Image = qrImage
+            Catch ex As Exception
+                MessageBox.Show("Unable to complete saving the QR code and Excel record." &
+                                Environment.NewLine & "Some files may already have been saved." &
+                                Environment.NewLine & ex.Message, "Save failed")
+            End Try
 
         End If
     End Sub
@@ -393,5 +408,7 @@ Public Class Walls
         editTextForm.ShowDialog()
     End Sub
 
+    Private Sub Label10_Click(sender As Object, e As EventArgs) Handles Label10.Click
 
+    End Sub
 End Class

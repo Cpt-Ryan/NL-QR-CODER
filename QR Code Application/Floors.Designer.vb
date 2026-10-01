@@ -1,4 +1,4 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class Floors
     Inherits System.Windows.Forms.Form
 
@@ -48,6 +48,7 @@ Partial Class Floors
         INT = New RadioButton()
         QRCode = New PictureBox()
         Button1 = New Button()
+        SoftPartCheckBox = New CheckBox()
         DEV = New CheckBox()
         StringBox = New TextBox()
         PictureBox1 = New PictureBox()
@@ -300,6 +301,15 @@ Partial Class Floors
         ' 
         ' DEV
         ' 
+        SoftPartCheckBox.AutoSize = True
+        SoftPartCheckBox.Checked = True
+        SoftPartCheckBox.CheckState = CheckState.Checked
+        SoftPartCheckBox.Location = New Point(358, 279)
+        SoftPartCheckBox.Name = "SoftPartCheckBox"
+        SoftPartCheckBox.Size = New Size(80, 24)
+        SoftPartCheckBox.TabIndex = 99
+        SoftPartCheckBox.Text = "Soft Part"
+        SoftPartCheckBox.UseVisualStyleBackColor = True
         DEV.AutoSize = True
         DEV.Location = New Point(358, 311)
         DEV.Name = "DEV"
@@ -375,6 +385,7 @@ Partial Class Floors
         Controls.Add(Label2)
         Controls.Add(PictureBox1)
         Controls.Add(StringBox)
+        Controls.Add(SoftPartCheckBox)
         Controls.Add(DEV)
         Controls.Add(Button1)
         Controls.Add(QRCode)
@@ -418,6 +429,7 @@ Partial Class Floors
     Friend WithEvents INT As RadioButton
     Friend WithEvents QRCode As PictureBox
     Friend WithEvents Button1 As Button
+    Friend WithEvents SoftPartCheckBox As CheckBox
     Friend WithEvents DEV As CheckBox
     Friend WithEvents StringBox As TextBox
     Friend WithEvents TextBox3 As TextBox

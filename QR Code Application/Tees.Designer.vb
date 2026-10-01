@@ -1,4 +1,4 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class Tees
     Inherits System.Windows.Forms.Form
 
@@ -74,6 +74,7 @@ Partial Class Tees
         Button1 = New Button()
         QRCode = New PictureBox()
         PictureBox1 = New PictureBox()
+        SoftPartCheckBox = New CheckBox()
         DEV = New CheckBox()
         Button2 = New Button()
         Label22 = New Label()
@@ -537,6 +538,15 @@ Partial Class Tees
         ' 
         ' DEV
         ' 
+        SoftPartCheckBox.AutoSize = True
+        SoftPartCheckBox.Checked = True
+        SoftPartCheckBox.CheckState = CheckState.Checked
+        SoftPartCheckBox.Location = New Point(585, 320)
+        SoftPartCheckBox.Name = "SoftPartCheckBox"
+        SoftPartCheckBox.Size = New Size(80, 24)
+        SoftPartCheckBox.TabIndex = 99
+        SoftPartCheckBox.Text = "Soft Part"
+        SoftPartCheckBox.UseVisualStyleBackColor = True
         DEV.AutoSize = True
         DEV.Location = New Point(626, 400)
         DEV.Name = "DEV"
@@ -627,6 +637,7 @@ Partial Class Tees
         Controls.Add(STD)
         Controls.Add(Label22)
         Controls.Add(Button2)
+        Controls.Add(SoftPartCheckBox)
         Controls.Add(DEV)
         Controls.Add(PictureBox1)
         Controls.Add(QRCode)
@@ -731,6 +742,7 @@ Partial Class Tees
     Friend WithEvents Button1 As Button
     Friend WithEvents QRCode As PictureBox
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents SoftPartCheckBox As CheckBox
     Friend WithEvents DEV As CheckBox
     Friend WithEvents Button2 As Button
     Friend WithEvents Label22 As Label

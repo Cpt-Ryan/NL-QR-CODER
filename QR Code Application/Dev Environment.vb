@@ -16,7 +16,9 @@ Public Class Edit_Text
             Dim qrImage As Bitmap = DEVQRGEN(QRString, PartNumber)
             QRCode.Image = qrImage
         Else
-            Dim qrImage As Bitmap = QRGEN(QRString, PartNumber)
+            Dim FoamDate As Date
+            FoamDate = InputBox("Please enter the Foam Date in the format of MM/DD/YY:", "Input Required")
+            Dim qrImage As Bitmap = QRGEN(QRString, PartNumber, FoamDate)
             QRCode.Image = qrImage
         End If
     End Sub
