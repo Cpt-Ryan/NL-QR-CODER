@@ -1,5 +1,5 @@
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Corners
+Partial Class CornerPanelForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,7 +22,7 @@ Partial Class Corners
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Corners))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CornerPanelForm))
         Label1 = New Label()
         Label2 = New Label()
         Label3 = New Label()
@@ -73,212 +73,224 @@ Partial Class Corners
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(12, 24)
+        Label1.Location = New Point(14, 32)
         Label1.Name = "Label1"
-        Label1.Size = New Size(95, 15)
+        Label1.Size = New Size(119, 20)
         Label1.TabIndex = 0
         Label1.Text = "Male Leg Length"
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Location = New Point(146, 24)
+        Label2.Location = New Point(167, 32)
         Label2.Name = "Label2"
-        Label2.Size = New Size(107, 15)
+        Label2.Size = New Size(134, 20)
         Label2.TabIndex = 1
         Label2.Text = "Female Leg Length"
         ' 
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Location = New Point(294, 24)
+        Label3.Location = New Point(336, 32)
         Label3.Name = "Label3"
-        Label3.Size = New Size(75, 15)
+        Label3.Size = New Size(95, 20)
         Label3.TabIndex = 2
         Label3.Text = "Shear Height"
         ' 
         ' MaleLeg
         ' 
-        MaleLeg.Location = New Point(12, 42)
+        MaleLeg.Location = New Point(14, 56)
+        MaleLeg.Margin = New Padding(3, 4, 3, 4)
         MaleLeg.Name = "MaleLeg"
-        MaleLeg.Size = New Size(100, 23)
+        MaleLeg.Size = New Size(114, 27)
         MaleLeg.TabIndex = 3
         ' 
         ' FemaleLeg
         ' 
-        FemaleLeg.Location = New Point(146, 42)
+        FemaleLeg.Location = New Point(167, 56)
+        FemaleLeg.Margin = New Padding(3, 4, 3, 4)
         FemaleLeg.Name = "FemaleLeg"
-        FemaleLeg.Size = New Size(100, 23)
+        FemaleLeg.Size = New Size(114, 27)
         FemaleLeg.TabIndex = 4
         ' 
         ' PanelHeight
         ' 
-        PanelHeight.Location = New Point(294, 42)
+        PanelHeight.Location = New Point(336, 56)
+        PanelHeight.Margin = New Padding(3, 4, 3, 4)
         PanelHeight.Name = "PanelHeight"
-        PanelHeight.Size = New Size(100, 23)
+        PanelHeight.Size = New Size(114, 27)
         PanelHeight.TabIndex = 5
         ' 
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Location = New Point(11, 122)
+        Label4.Location = New Point(13, 163)
         Label4.Name = "Label4"
-        Label4.Size = New Size(48, 15)
+        Label4.Size = New Size(62, 20)
         Label4.TabIndex = 6
         Label4.Text = "Male T1"
         ' 
         ' Label5
         ' 
         Label5.AutoSize = True
-        Label5.Location = New Point(11, 151)
+        Label5.Location = New Point(13, 201)
         Label5.Name = "Label5"
-        Label5.Size = New Size(60, 15)
+        Label5.Size = New Size(77, 20)
         Label5.TabIndex = 7
         Label5.Text = "Female T1"
         ' 
         ' Label6
         ' 
         Label6.AutoSize = True
-        Label6.Location = New Point(12, 251)
+        Label6.Location = New Point(14, 335)
         Label6.Name = "Label6"
-        Label6.Size = New Size(49, 15)
+        Label6.Size = New Size(63, 20)
         Label6.TabIndex = 8
         Label6.Text = "Male B1"
         ' 
         ' Label7
         ' 
         Label7.AutoSize = True
-        Label7.Location = New Point(11, 222)
+        Label7.Location = New Point(13, 296)
         Label7.Name = "Label7"
-        Label7.Size = New Size(61, 15)
+        Label7.Size = New Size(78, 20)
         Label7.TabIndex = 9
         Label7.Text = "Female B1"
         ' 
         ' S1
         ' 
         S1.AutoSize = True
-        S1.Location = New Point(20, 331)
+        S1.Location = New Point(23, 441)
         S1.Name = "S1"
-        S1.Size = New Size(19, 15)
+        S1.Size = New Size(25, 20)
         S1.TabIndex = 10
         S1.Text = "S1"
         ' 
         ' Label9
         ' 
         Label9.AutoSize = True
-        Label9.Location = New Point(20, 360)
+        Label9.Location = New Point(23, 480)
         Label9.Name = "Label9"
-        Label9.Size = New Size(19, 15)
+        Label9.Size = New Size(25, 20)
         Label9.TabIndex = 11
         Label9.Text = "S2"
         ' 
         ' Label10
         ' 
         Label10.AutoSize = True
-        Label10.Location = New Point(20, 389)
+        Label10.Location = New Point(23, 519)
         Label10.Name = "Label10"
-        Label10.Size = New Size(19, 15)
+        Label10.Size = New Size(25, 20)
         Label10.TabIndex = 12
         Label10.Text = "S3"
         ' 
         ' Label11
         ' 
         Label11.AutoSize = True
-        Label11.Location = New Point(20, 418)
+        Label11.Location = New Point(23, 557)
         Label11.Name = "Label11"
-        Label11.Size = New Size(19, 15)
+        Label11.Size = New Size(25, 20)
         Label11.TabIndex = 13
         Label11.Text = "S4"
         ' 
         ' TextBox1
         ' 
-        TextBox1.Location = New Point(90, 119)
+        TextBox1.Location = New Point(103, 159)
+        TextBox1.Margin = New Padding(3, 4, 3, 4)
         TextBox1.Name = "TextBox1"
-        TextBox1.Size = New Size(100, 23)
+        TextBox1.Size = New Size(114, 27)
         TextBox1.TabIndex = 14
         ' 
         ' TextBox2
         ' 
-        TextBox2.Location = New Point(90, 148)
+        TextBox2.Location = New Point(103, 197)
+        TextBox2.Margin = New Padding(3, 4, 3, 4)
         TextBox2.Name = "TextBox2"
-        TextBox2.Size = New Size(100, 23)
+        TextBox2.Size = New Size(114, 27)
         TextBox2.TabIndex = 15
         ' 
         ' TextBox3
         ' 
-        TextBox3.Location = New Point(90, 248)
+        TextBox3.Location = New Point(103, 331)
+        TextBox3.Margin = New Padding(3, 4, 3, 4)
         TextBox3.Name = "TextBox3"
-        TextBox3.Size = New Size(100, 23)
+        TextBox3.Size = New Size(114, 27)
         TextBox3.TabIndex = 16
         ' 
         ' TextBox4
         ' 
-        TextBox4.Location = New Point(89, 219)
+        TextBox4.Location = New Point(102, 292)
+        TextBox4.Margin = New Padding(3, 4, 3, 4)
         TextBox4.Name = "TextBox4"
-        TextBox4.Size = New Size(100, 23)
+        TextBox4.Size = New Size(114, 27)
         TextBox4.TabIndex = 17
         ' 
         ' TextBox5
         ' 
-        TextBox5.Location = New Point(45, 328)
+        TextBox5.Location = New Point(51, 437)
+        TextBox5.Margin = New Padding(3, 4, 3, 4)
         TextBox5.Name = "TextBox5"
-        TextBox5.Size = New Size(100, 23)
+        TextBox5.Size = New Size(114, 27)
         TextBox5.TabIndex = 18
         ' 
         ' TextBox6
         ' 
-        TextBox6.Location = New Point(45, 357)
+        TextBox6.Location = New Point(51, 476)
+        TextBox6.Margin = New Padding(3, 4, 3, 4)
         TextBox6.Name = "TextBox6"
-        TextBox6.Size = New Size(100, 23)
+        TextBox6.Size = New Size(114, 27)
         TextBox6.TabIndex = 19
         ' 
         ' TextBox7
         ' 
-        TextBox7.Location = New Point(45, 386)
+        TextBox7.Location = New Point(51, 515)
+        TextBox7.Margin = New Padding(3, 4, 3, 4)
         TextBox7.Name = "TextBox7"
-        TextBox7.Size = New Size(100, 23)
+        TextBox7.Size = New Size(114, 27)
         TextBox7.TabIndex = 20
         ' 
         ' TextBox8
         ' 
-        TextBox8.Location = New Point(45, 415)
+        TextBox8.Location = New Point(51, 553)
+        TextBox8.Margin = New Padding(3, 4, 3, 4)
         TextBox8.Name = "TextBox8"
-        TextBox8.Size = New Size(100, 23)
+        TextBox8.Size = New Size(114, 27)
         TextBox8.TabIndex = 21
         ' 
         ' Label8
         ' 
         Label8.AutoSize = True
-        Label8.Location = New Point(3, 89)
+        Label8.Location = New Point(3, 119)
         Label8.Name = "Label8"
-        Label8.Size = New Size(59, 15)
+        Label8.Size = New Size(74, 20)
         Label8.TabIndex = 22
         Label8.Text = "Top Locks"
         ' 
         ' Label12
         ' 
         Label12.AutoSize = True
-        Label12.Location = New Point(3, 190)
+        Label12.Location = New Point(3, 253)
         Label12.Name = "Label12"
-        Label12.Size = New Size(80, 15)
+        Label12.Size = New Size(99, 20)
         Label12.TabIndex = 23
         Label12.Text = "Bottom Locks"
         ' 
         ' Label13
         ' 
         Label13.AutoSize = True
-        Label13.Location = New Point(3, 301)
+        Label13.Location = New Point(3, 401)
         Label13.Name = "Label13"
-        Label13.Size = New Size(62, 15)
+        Label13.Size = New Size(78, 20)
         Label13.TabIndex = 24
         Label13.Text = "Side Locks"
         ' 
         ' FBCheckBox
         ' 
         FBCheckBox.AutoSize = True
-        FBCheckBox.Location = New Point(443, 98)
+        FBCheckBox.Location = New Point(506, 131)
+        FBCheckBox.Margin = New Padding(3, 4, 3, 4)
         FBCheckBox.Name = "FBCheckBox"
-        FBCheckBox.Size = New Size(107, 19)
+        FBCheckBox.Size = New Size(133, 24)
         FBCheckBox.TabIndex = 25
         FBCheckBox.Text = "Female Bottom"
         FBCheckBox.UseVisualStyleBackColor = True
@@ -286,43 +298,49 @@ Partial Class Corners
         ' Splitter1
         ' 
         Splitter1.Location = New Point(0, 0)
+        Splitter1.Margin = New Padding(3, 4, 3, 4)
         Splitter1.Name = "Splitter1"
-        Splitter1.Size = New Size(3, 596)
+        Splitter1.Size = New Size(3, 832)
         Splitter1.TabIndex = 26
         Splitter1.TabStop = False
         ' 
         ' Splitter2
         ' 
         Splitter2.Location = New Point(3, 0)
+        Splitter2.Margin = New Padding(3, 4, 3, 4)
         Splitter2.Name = "Splitter2"
-        Splitter2.Size = New Size(3, 596)
+        Splitter2.Size = New Size(3, 832)
         Splitter2.TabIndex = 27
         Splitter2.TabStop = False
         ' 
         ' Button1
         ' 
-        Button1.Location = New Point(347, 301)
+        Button1.Location = New Point(501, 389)
+        Button1.Margin = New Padding(3, 4, 3, 4)
         Button1.Name = "Button1"
-        Button1.Size = New Size(136, 47)
+        Button1.Size = New Size(155, 63)
         Button1.TabIndex = 28
-        Button1.Text = "Generate String"
+        Button1.Text = "Generate QR Code"
         Button1.UseVisualStyleBackColor = True
         ' 
         ' StringBox
         ' 
-        StringBox.Location = New Point(163, 360)
+        StringBox.Location = New Point(186, 480)
+        StringBox.Margin = New Padding(3, 4, 3, 4)
         StringBox.Multiline = True
         StringBox.Name = "StringBox"
-        StringBox.Size = New Size(332, 108)
+        StringBox.Size = New Size(379, 143)
         StringBox.TabIndex = 29
         ' 
         ' GroupBox1
         ' 
         GroupBox1.Controls.Add(EXT)
         GroupBox1.Controls.Add(INT)
-        GroupBox1.Location = New Point(424, 24)
+        GroupBox1.Location = New Point(485, 32)
+        GroupBox1.Margin = New Padding(3, 4, 3, 4)
         GroupBox1.Name = "GroupBox1"
-        GroupBox1.Size = New Size(126, 68)
+        GroupBox1.Padding = New Padding(3, 4, 3, 4)
+        GroupBox1.Size = New Size(144, 91)
         GroupBox1.TabIndex = 30
         GroupBox1.TabStop = False
         GroupBox1.Text = "Metal Type"
@@ -330,9 +348,10 @@ Partial Class Corners
         ' EXT
         ' 
         EXT.AutoSize = True
-        EXT.Location = New Point(6, 40)
+        EXT.Location = New Point(7, 53)
+        EXT.Margin = New Padding(3, 4, 3, 4)
         EXT.Name = "EXT"
-        EXT.Size = New Size(65, 19)
+        EXT.Size = New Size(81, 24)
         EXT.TabIndex = 1
         EXT.Text = "Exterior"
         EXT.UseVisualStyleBackColor = True
@@ -341,9 +360,10 @@ Partial Class Corners
         ' 
         INT.AutoSize = True
         INT.Checked = True
-        INT.Location = New Point(6, 18)
+        INT.Location = New Point(7, 24)
+        INT.Margin = New Padding(3, 4, 3, 4)
         INT.Name = "INT"
-        INT.Size = New Size(63, 19)
+        INT.Size = New Size(78, 24)
         INT.TabIndex = 0
         INT.TabStop = True
         INT.Text = "Interior"
@@ -351,9 +371,10 @@ Partial Class Corners
         ' 
         ' QRCode
         ' 
-        QRCode.Location = New Point(345, 164)
+        QRCode.Location = New Point(312, 277)
+        QRCode.Margin = New Padding(3, 4, 3, 4)
         QRCode.Name = "QRCode"
-        QRCode.Size = New Size(148, 131)
+        QRCode.Size = New Size(169, 175)
         QRCode.SizeMode = PictureBoxSizeMode.Zoom
         QRCode.TabIndex = 31
         QRCode.TabStop = False
@@ -361,38 +382,45 @@ Partial Class Corners
         ' PictureBox1
         ' 
         PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Image)
-        PictureBox1.Location = New Point(569, 8)
+        PictureBox1.Location = New Point(704, 13)
+        PictureBox1.Margin = New Padding(3, 4, 3, 4)
         PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(350, 576)
+        PictureBox1.Size = New Size(400, 768)
         PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
         PictureBox1.TabIndex = 32
         PictureBox1.TabStop = False
         ' 
-        ' DEV
+        ' SoftPartCheckBox
         ' 
         SoftPartCheckBox.AutoSize = True
         SoftPartCheckBox.Checked = True
         SoftPartCheckBox.CheckState = CheckState.Checked
-        SoftPartCheckBox.Location = New Point(200, 301)
+        SoftPartCheckBox.Location = New Point(501, 335)
+        SoftPartCheckBox.Margin = New Padding(3, 4, 3, 4)
         SoftPartCheckBox.Name = "SoftPartCheckBox"
-        SoftPartCheckBox.Size = New Size(80, 24)
+        SoftPartCheckBox.Size = New Size(87, 24)
         SoftPartCheckBox.TabIndex = 99
         SoftPartCheckBox.Text = "Soft Part"
         SoftPartCheckBox.UseVisualStyleBackColor = True
+        ' 
+        ' DEV
+        ' 
         DEV.AutoSize = True
-        DEV.Location = New Point(489, 313)
+        DEV.Location = New Point(501, 357)
+        DEV.Margin = New Padding(3, 4, 3, 4)
         DEV.Name = "DEV"
-        DEV.Size = New Size(69, 19)
+        DEV.Size = New Size(116, 24)
         DEV.TabIndex = 33
-        DEV.Text = "Dev Test"
+        DEV.Text = "Preview Only"
         DEV.UseVisualStyleBackColor = True
         ' 
         ' STD
         ' 
         STD.AutoSize = True
-        STD.Location = New Point(443, 118)
+        STD.Location = New Point(506, 157)
+        STD.Margin = New Padding(3, 4, 3, 4)
         STD.Name = "STD"
-        STD.Size = New Size(85, 19)
+        STD.Size = New Size(106, 24)
         STD.TabIndex = 34
         STD.Text = "STD Corner"
         STD.UseVisualStyleBackColor = True
@@ -400,18 +428,19 @@ Partial Class Corners
         ' Label14
         ' 
         Label14.AutoSize = True
-        Label14.Location = New Point(129, 74)
+        Label14.Location = New Point(147, 99)
         Label14.Name = "Label14"
-        Label14.Size = New Size(265, 30)
+        Label14.Size = New Size(334, 40)
         Label14.TabIndex = 35
         Label14.Text = "It is ok to leave lock locations empty, " & vbCrLf & "If the textbox is empty the program will ignore it."
         ' 
         ' Thickness
         ' 
         Thickness.AutoSize = True
-        Thickness.Location = New Point(443, 139)
+        Thickness.Location = New Point(506, 185)
+        Thickness.Margin = New Padding(3, 4, 3, 4)
         Thickness.Name = "Thickness"
-        Thickness.Size = New Size(91, 19)
+        Thickness.Size = New Size(111, 24)
         Thickness.TabIndex = 36
         Thickness.Text = "5"" Thickness"
         Thickness.UseVisualStyleBackColor = True
@@ -419,28 +448,29 @@ Partial Class Corners
         ' PN
         ' 
         PN.AutoSize = True
-        PN.Location = New Point(174, 342)
+        PN.Location = New Point(199, 456)
         PN.Name = "PN"
-        PN.Size = New Size(47, 15)
+        PN.Size = New Size(61, 20)
         PN.TabIndex = 37
         PN.Text = "Label15"
         PN.Visible = False
         ' 
         ' DEVTEXT
         ' 
-        DEVTEXT.Location = New Point(400, 474)
+        DEVTEXT.Location = New Point(457, 632)
+        DEVTEXT.Margin = New Padding(3, 4, 3, 4)
         DEVTEXT.Name = "DEVTEXT"
-        DEVTEXT.Size = New Size(83, 36)
+        DEVTEXT.Size = New Size(95, 48)
         DEVTEXT.TabIndex = 38
         DEVTEXT.Text = "Edit String"
         DEVTEXT.UseVisualStyleBackColor = True
         DEVTEXT.Visible = False
         ' 
-        ' Corners
+        ' CornerPanelForm
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(958, 596)
+        ClientSize = New Size(1186, 832)
         Controls.Add(DEVTEXT)
         Controls.Add(PN)
         Controls.Add(Thickness)
@@ -481,8 +511,9 @@ Partial Class Corners
         Controls.Add(Label3)
         Controls.Add(Label2)
         Controls.Add(Label1)
-        Name = "Corners"
-        Text = "Corners"
+        Margin = New Padding(3, 4, 3, 4)
+        Name = "CornerPanelForm"
+        Text = "Corner Panels"
         GroupBox1.ResumeLayout(False)
         GroupBox1.PerformLayout()
         CType(QRCode, ComponentModel.ISupportInitialize).EndInit()

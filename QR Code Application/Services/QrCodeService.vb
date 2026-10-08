@@ -5,8 +5,9 @@ Imports ClosedXML.Excel
 Module QRCodeModule
 
     Function QRGEN(ByVal QRString As String, ByVal PartNumber As String, ByVal FoamDate As Date?, Optional ByVal IsSoftPart As Boolean = False) As Bitmap
-        Dim baseSavePath As String = ("\\10.10.3.97\drawing_library\ROLLFORMER QR CODES\QR Codes")
-        Dim baseSavePath2 As String = ("\\10.27.1.207\ProdCtl_PDFs\ROLLFORMER QR CODES")
+        Dim settings = StorageConfiguration.Load()
+        Dim baseSavePath As String = settings.PrimaryQrFolder
+        Dim baseSavePath2 As String = settings.SecondaryQrFolder
         Dim filename As String = $"{PartNumber}.jpg"
         Dim SavePath As String = System.IO.Path.Combine(baseSavePath, filename)
         Dim SavePath2 As String = System.IO.Path.Combine(baseSavePath2, filename)
@@ -15,8 +16,8 @@ Module QRCodeModule
             Throw New ArgumentException("A foam date is required for soft parts.", NameOf(FoamDate))
         End If
 
-        ' Prepare the selected worksheet before writing any image files.
-        Using workbook As New XLWorkbook("\\10.10.3.97\drawing_library\ROLLFORMER QR CODES\QR Code Strings.xlsm")
+        ' Open the master template directly so Save updates it, rather than creating a copy.
+        Using workbook As New XLWorkbook(settings.WorkbookPath)
             WriteQRRecord(workbook, QRString, PartNumber, SavePath, FoamDate, IsSoftPart)
             Using gen As New QRCodeGenerator()
                 Using data As QRCodeData = gen.CreateQrCode(QRString, QRCodeGenerator.ECCLevel.Q)

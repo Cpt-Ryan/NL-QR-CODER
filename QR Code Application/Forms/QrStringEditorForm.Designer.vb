@@ -1,5 +1,5 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Edit_Text
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+Partial Class QrStringEditorForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -65,7 +65,7 @@ Partial Class Edit_Text
         DEV.Name = "DEV"
         DEV.Size = New Size(70, 19)
         DEV.TabIndex = 3
-        DEV.Text = "DEV Test"
+        DEV.Text = "Preview Only"
         DEV.UseVisualStyleBackColor = True
         ' 
         ' TextBox2
@@ -93,7 +93,7 @@ Partial Class Edit_Text
         Label1.TabIndex = 7
         Label1.Text = "String"
         ' 
-        ' Edit_Text
+        ' QrStringEditorForm
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
@@ -105,8 +105,8 @@ Partial Class Edit_Text
         Controls.Add(QRCode)
         Controls.Add(Button1)
         Controls.Add(TextBox1)
-        Name = "Edit_Text"
-        Text = "Dev Environment"
+        Name = "QrStringEditorForm"
+        Text = "QR String Editor"
         CType(QRCode, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()

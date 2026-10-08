@@ -1,6 +1,6 @@
 Imports DocumentFormat.OpenXml.Wordprocessing
 
-Public Class Corners
+Public Class CornerPanelForm
     Private Sub FBCheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles FBCheckBox.CheckedChanged
         Dim enabled As Boolean = Not (FBCheckBox.Checked Or EXT.Checked)
         TextBox3.Enabled = enabled
@@ -343,14 +343,14 @@ Public Class Corners
         Return textBoxValues
     End Function
     Private Sub DEVTEXT_Click(sender As Object, e As EventArgs) Handles DEVTEXT.Click
-        ' Create an instance of the Edit_Text form
-        Dim editTextForm As New Edit_Text()
+        ' Create an instance of the QrStringEditorForm form
+        Dim editTextForm As New QrStringEditorForm()
 
-        ' Pass the data to the Edit_Text form
+        ' Pass the data to the QrStringEditorForm form
         editTextForm.QRString = StringBox.Text
         editTextForm.PartNumber = PN.Text
 
-        ' Show the Edit_Text form
+        ' Show the QrStringEditorForm form
         editTextForm.ShowDialog()
     End Sub
 

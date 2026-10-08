@@ -1,6 +1,6 @@
-﻿Imports DocumentFormat.OpenXml.Wordprocessing
+Imports DocumentFormat.OpenXml.Wordprocessing
 
-Public Class Edit_Text
+Public Class QrStringEditorForm
     Public Property QRString As String
     Public Property PartNumber As String
 
@@ -18,8 +18,12 @@ Public Class Edit_Text
         Else
             Dim FoamDate As Date
             FoamDate = InputBox("Please enter the Foam Date in the format of MM/DD/YY:", "Input Required")
-            Dim qrImage As Bitmap = QRGEN(QRString, PartNumber, FoamDate)
-            QRCode.Image = qrImage
+            Try
+                Dim qrImage As Bitmap = QRGEN(QRString, PartNumber, FoamDate)
+                QRCode.Image = qrImage
+            Catch ex As StorageConfigurationException
+                MessageBox.Show(ex.Message, "Configuration Required", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            End Try
         End If
     End Sub
 End Class

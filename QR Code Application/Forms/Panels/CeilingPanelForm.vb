@@ -2,44 +2,62 @@ Imports System.Drawing.Text
 Imports DocumentFormat.OpenXml.Office2010.Word
 Imports QRCoder
 
-Public Class Ceilings
+Public Class CeilingPanelForm
+    Private defaultCeilingDiagram As Image
+    Private interiorOutsideDiagram As Bitmap
+    Private interiorCenterDiagram As Bitmap
+    Private exteriorDiagram As Bitmap
+
+    Public Sub New()
+        InitializeComponent()
+        defaultCeilingDiagram = PictureBox1.Image
+        Using stream = GetType(CeilingPanelForm).Assembly.GetManifestResourceStream("QR_Code_Application.Images.CeilingInteriorOutside.png")
+            Using source As Image = Image.FromStream(stream)
+                interiorOutsideDiagram = New Bitmap(source)
+            End Using
+        End Using
+        Using stream = GetType(CeilingPanelForm).Assembly.GetManifestResourceStream("QR_Code_Application.Images.CeilingInteriorCenter.png")
+            Using source As Image = Image.FromStream(stream)
+                interiorCenterDiagram = New Bitmap(source)
+            End Using
+        End Using
+        Using stream = GetType(CeilingPanelForm).Assembly.GetManifestResourceStream("QR_Code_Application.Images.CeilingExterior.png")
+            Using source As Image = Image.FromStream(stream)
+                exteriorDiagram = New Bitmap(source)
+            End Using
+        End Using
+        UpdateCeilingDiagram()
+    End Sub
+
+    Private Sub UpdateCeilingDiagram()
+        ' CheckedChanged can fire while InitializeComponent is still creating controls.
+        If interiorOutsideDiagram Is Nothing OrElse interiorCenterDiagram Is Nothing OrElse exteriorDiagram Is Nothing Then Return
+        If EXT.Checked Then
+            PictureBox1.Image = exteriorDiagram
+        ElseIf INT.Checked AndAlso (OSMA.Checked OrElse OSFE.Checked) Then
+            PictureBox1.Image = interiorOutsideDiagram
+        ElseIf INT.Checked AndAlso CNT.Checked Then
+            PictureBox1.Image = interiorCenterDiagram
+        Else
+            PictureBox1.Image = defaultCeilingDiagram
+        End If
+    End Sub
+
+    Private Sub CeilingPanelForm_Disposed(sender As Object, e As EventArgs) Handles Me.Disposed
+        If interiorOutsideDiagram IsNot Nothing Then interiorOutsideDiagram.Dispose()
+        If interiorCenterDiagram IsNot Nothing Then interiorCenterDiagram.Dispose()
+        If exteriorDiagram IsNot Nothing Then exteriorDiagram.Dispose()
+    End Sub
+
     'This is filtering the UI to hide and show relevant options, good luck decifering 
     Private Sub OSFE_CheckedChanged(sender As Object, e As EventArgs) Handles OSFE.CheckedChanged, OSMA.CheckedChanged, CNT.CheckedChanged, INT.CheckedChanged
         GroupBox1.Enabled = Not EXT.Checked And Not OSFE.Checked
+        UpdateCeilingDiagram()
     End Sub
 
     Private Sub EXT_CheckedChanged(sender As Object, e As EventArgs) Handles EXT.CheckedChanged
         GroupBox1.Enabled = Not EXT.Checked
-    End Sub
-    Private Sub SPL_CheckedChanged(sender As Object, e As EventArgs) Handles SPL.CheckedChanged
-        If SPL.Checked Then
-            SPLWidth.Enabled = True
-            SPLLength.Enabled = True
-            Part.Checked = False
-            PanelWidth.Enabled = False
-            PanelLenght.Enabled = False
-            PanelWidth.Text = 24
-            PanelLenght.Text = 72
-            Thickness.Checked = False
-            Thickness.Enabled = False
-        Else
-            SPLWidth.Enabled = False
-            SPLLength.Enabled = False
-            PanelWidth.Enabled = True
-            PanelLenght.Enabled = True
-            PanelWidth.Text = ""
-            PanelLenght.Text = ""
-            Thickness.Enabled = True
-        End If
-    End Sub
-
-    Private Sub Part_CheckedChanged(sender As Object, e As EventArgs) Handles Part.CheckedChanged
-        If Part.Checked Then
-            SPL.Checked = False
-            CNT.Enabled = False
-        Else
-            CNT.Enabled = True
-        End If
+        UpdateCeilingDiagram()
     End Sub
     'Actually building the string
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -74,31 +92,9 @@ Public Class Ceilings
             Return
         End If
 
-        If Part.Checked Then
-            If INT.Checked Then
-                ShearPanelWidth += 2
-            End If
-        End If
-
         If Thickness.Checked And INT.Checked Then
             ShearPanelLenght -= 2
             ShearPanelWidth -= 1
-        End If
-
-        Dim shearsplWidth As String = SPLWidth.Text
-        Dim shearsplLength As String = SPLLength.Text
-        Dim SpliceWidth As Double
-        Dim SpliceLength As Double
-
-        If SPL.Checked Then
-            ' Attempt to convert the text box values to double
-            If Double.TryParse(shearsplWidth, SpliceWidth) AndAlso Double.TryParse(shearsplLength, SpliceLength) Then
-                ShearPanelWidth = SpliceWidth
-                ShearPanelLenght = SpliceLength
-            Else
-                ' Handle the case where conversion fails, e.g., show a message to the user
-                MessageBox.Show("Please enter valid numeric values for SPL Width and Length.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End If
         End If
 
         '*******************************************Exterior Corner Notches*******************************************************
@@ -213,11 +209,6 @@ Public Class Ceilings
         Dim SideLockString As String
 
         Dim YValue As Double = 1.6875
-        Dim SXoffset As Double = 3.21875
-
-        If Thickness.Checked Then
-            SXoffset = 4.21875
-        End If
 
         Dim S1 As PointF
         Dim S1String As String
@@ -226,7 +217,7 @@ Public Class Ceilings
             S1String = String.Empty
 
         Else
-            S1 = New PointF(S1x - SXoffset, YValue)
+            S1 = New PointF(S1x, YValue)
             S1String = $",L7,{S1.X},{S1.Y}"
         End If
 
@@ -236,7 +227,7 @@ Public Class Ceilings
         If S2x = 0 Then
             S2String = String.Empty
         Else
-            S2 = New PointF(S2x - SXoffset, YValue)
+            S2 = New PointF(S2x, YValue)
             S2String = $",L7,{S2.X},{S2.Y}"
         End If
 
@@ -246,7 +237,7 @@ Public Class Ceilings
         If S3x = 0 Then
             S3String = String.Empty
         Else
-            S3 = New PointF(S3x - SXoffset, YValue)
+            S3 = New PointF(S3x, YValue)
             S3String = $",L7,{S3.X},{S3.Y}"
         End If
 
@@ -256,7 +247,7 @@ Public Class Ceilings
         If S4x = 0 Then
             S4String = String.Empty
         Else
-            S4 = New PointF(S4x - SXoffset, YValue)
+            S4 = New PointF(S4x, YValue)
             S4String = $",L7,{S4.X},{S4.Y}"
         End If
 
@@ -266,7 +257,7 @@ Public Class Ceilings
         If S5x = 0 Then
             S5String = String.Empty
         Else
-            S5 = New PointF(S5x - SXoffset, YValue)
+            S5 = New PointF(S5x, YValue)
             S5String = $",L7,{S5.X},{S5.Y}"
         End If
 
@@ -378,18 +369,29 @@ Public Class Ceilings
             Next
         End If
 
+        ' Inputs are spacings; blank/zero boxes remain omitted from the QR string.
+        Dim position As Double = 0
+        For i As Integer = 1 To 5
+            Dim key As String = $"TextBox{i}"
+            Dim spacing As Double = textBoxValues(key)
+            If spacing <> 0 Then
+                position += spacing
+                textBoxValues(key) = position
+            End If
+        Next
+
         Return textBoxValues
     End Function
 
     Private Sub DEVTEXT_Click(sender As Object, e As EventArgs) Handles DEVTEXT.Click
-        ' Create an instance of the Edit_Text form
-        Dim editTextForm As New Edit_Text()
+        ' Create an instance of the QrStringEditorForm form
+        Dim editTextForm As New QrStringEditorForm()
 
-        ' Pass the data to the Edit_Text form
+        ' Pass the data to the QrStringEditorForm form
         editTextForm.QRString = StringBox.Text
         editTextForm.PartNumber = PN.Text
 
-        ' Show the Edit_Text form
+        ' Show the QrStringEditorForm form
         editTextForm.ShowDialog()
     End Sub
 End Class

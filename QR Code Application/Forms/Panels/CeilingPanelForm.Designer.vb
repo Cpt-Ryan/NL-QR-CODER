@@ -1,5 +1,5 @@
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Ceilings
+Partial Class CeilingPanelForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,7 +22,7 @@ Partial Class Ceilings
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Ceilings))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CeilingPanelForm))
         Label2 = New Label()
         Label1 = New Label()
         PanelWidth = New TextBox()
@@ -52,14 +52,6 @@ Partial Class Ceilings
         SoftPartCheckBox = New CheckBox()
         DEV = New CheckBox()
         Label3 = New Label()
-        Part = New CheckBox()
-        Label4 = New Label()
-        SPL = New CheckBox()
-        SPLWidth = New TextBox()
-        SPLLength = New TextBox()
-        Label5 = New Label()
-        Label6 = New Label()
-        Label7 = New Label()
         Thickness = New CheckBox()
         DEVTEXT = New Button()
         PN = New Label()
@@ -73,33 +65,35 @@ Partial Class Ceilings
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Location = New Point(138, 18)
+        Label2.Location = New Point(158, 24)
         Label2.Name = "Label2"
-        Label2.Size = New Size(76, 15)
+        Label2.Size = New Size(95, 20)
         Label2.TabIndex = 5
         Label2.Text = "Shear Length"
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(12, 18)
+        Label1.Location = New Point(14, 24)
         Label1.Name = "Label1"
-        Label1.Size = New Size(74, 15)
+        Label1.Size = New Size(90, 20)
         Label1.TabIndex = 4
         Label1.Text = "Shear Width"
         ' 
         ' PanelWidth
         ' 
-        PanelWidth.Location = New Point(12, 36)
+        PanelWidth.Location = New Point(14, 48)
+        PanelWidth.Margin = New Padding(3, 4, 3, 4)
         PanelWidth.Name = "PanelWidth"
-        PanelWidth.Size = New Size(100, 23)
+        PanelWidth.Size = New Size(114, 27)
         PanelWidth.TabIndex = 6
         ' 
         ' PanelLenght
         ' 
-        PanelLenght.Location = New Point(138, 36)
+        PanelLenght.Location = New Point(158, 48)
+        PanelLenght.Margin = New Padding(3, 4, 3, 4)
         PanelLenght.Name = "PanelLenght"
-        PanelLenght.Size = New Size(100, 23)
+        PanelLenght.Size = New Size(114, 27)
         PanelLenght.TabIndex = 7
         ' 
         ' PanelType
@@ -107,9 +101,11 @@ Partial Class Ceilings
         PanelType.Controls.Add(CNT)
         PanelType.Controls.Add(OSFE)
         PanelType.Controls.Add(OSMA)
-        PanelType.Location = New Point(283, 12)
+        PanelType.Location = New Point(323, 16)
+        PanelType.Margin = New Padding(3, 4, 3, 4)
         PanelType.Name = "PanelType"
-        PanelType.Size = New Size(200, 100)
+        PanelType.Padding = New Padding(3, 4, 3, 4)
+        PanelType.Size = New Size(229, 133)
         PanelType.TabIndex = 8
         PanelType.TabStop = False
         PanelType.Text = "Panel Type"
@@ -117,9 +113,10 @@ Partial Class Ceilings
         ' CNT
         ' 
         CNT.AutoSize = True
-        CNT.Location = New Point(8, 69)
+        CNT.Location = New Point(9, 92)
+        CNT.Margin = New Padding(3, 4, 3, 4)
         CNT.Name = "CNT"
-        CNT.Size = New Size(60, 19)
+        CNT.Size = New Size(73, 24)
         CNT.TabIndex = 2
         CNT.Text = "Center"
         CNT.UseVisualStyleBackColor = True
@@ -127,9 +124,10 @@ Partial Class Ceilings
         ' OSFE
         ' 
         OSFE.AutoSize = True
-        OSFE.Location = New Point(8, 44)
+        OSFE.Location = New Point(9, 59)
+        OSFE.Margin = New Padding(3, 4, 3, 4)
         OSFE.Name = "OSFE"
-        OSFE.Size = New Size(107, 19)
+        OSFE.Size = New Size(133, 24)
         OSFE.TabIndex = 1
         OSFE.Text = "Outside Female"
         OSFE.UseVisualStyleBackColor = True
@@ -138,9 +136,10 @@ Partial Class Ceilings
         ' 
         OSMA.AutoSize = True
         OSMA.Checked = True
-        OSMA.Location = New Point(8, 19)
+        OSMA.Location = New Point(9, 25)
+        OSMA.Margin = New Padding(3, 4, 3, 4)
         OSMA.Name = "OSMA"
-        OSMA.Size = New Size(95, 19)
+        OSMA.Size = New Size(118, 24)
         OSMA.TabIndex = 0
         OSMA.TabStop = True
         OSMA.Text = "Outside Male"
@@ -150,9 +149,11 @@ Partial Class Ceilings
         ' 
         MetalType.Controls.Add(EXT)
         MetalType.Controls.Add(INT)
-        MetalType.Location = New Point(499, 12)
+        MetalType.Location = New Point(570, 16)
+        MetalType.Margin = New Padding(3, 4, 3, 4)
         MetalType.Name = "MetalType"
-        MetalType.Size = New Size(90, 74)
+        MetalType.Padding = New Padding(3, 4, 3, 4)
+        MetalType.Size = New Size(103, 99)
         MetalType.TabIndex = 9
         MetalType.TabStop = False
         MetalType.Text = "Metal Type"
@@ -160,9 +161,10 @@ Partial Class Ceilings
         ' EXT
         ' 
         EXT.AutoSize = True
-        EXT.Location = New Point(6, 44)
+        EXT.Location = New Point(7, 59)
+        EXT.Margin = New Padding(3, 4, 3, 4)
         EXT.Name = "EXT"
-        EXT.Size = New Size(65, 19)
+        EXT.Size = New Size(81, 24)
         EXT.TabIndex = 1
         EXT.Text = "Exterior"
         EXT.UseVisualStyleBackColor = True
@@ -171,9 +173,10 @@ Partial Class Ceilings
         ' 
         INT.AutoSize = True
         INT.Checked = True
-        INT.Location = New Point(6, 19)
+        INT.Location = New Point(7, 25)
+        INT.Margin = New Padding(3, 4, 3, 4)
         INT.Name = "INT"
-        INT.Size = New Size(63, 19)
+        INT.Size = New Size(78, 24)
         INT.TabIndex = 0
         INT.TabStop = True
         INT.Text = "Interior"
@@ -182,81 +185,86 @@ Partial Class Ceilings
         ' S1
         ' 
         S1.AutoSize = True
-        S1.Location = New Point(19, 26)
+        S1.Location = New Point(22, 35)
         S1.Name = "S1"
-        S1.Size = New Size(19, 15)
+        S1.Size = New Size(25, 20)
         S1.TabIndex = 10
         S1.Text = "S1"
         ' 
         ' S2
         ' 
         S2.AutoSize = True
-        S2.Location = New Point(19, 57)
+        S2.Location = New Point(22, 76)
         S2.Name = "S2"
-        S2.Size = New Size(19, 15)
+        S2.Size = New Size(25, 20)
         S2.TabIndex = 11
         S2.Text = "S2"
         ' 
         ' S3
         ' 
         S3.AutoSize = True
-        S3.Location = New Point(19, 86)
+        S3.Location = New Point(22, 115)
         S3.Name = "S3"
-        S3.Size = New Size(19, 15)
+        S3.Size = New Size(25, 20)
         S3.TabIndex = 12
         S3.Text = "S3"
         ' 
         ' S4
         ' 
         S4.AutoSize = True
-        S4.Location = New Point(19, 115)
+        S4.Location = New Point(22, 153)
         S4.Name = "S4"
-        S4.Size = New Size(19, 15)
+        S4.Size = New Size(25, 20)
         S4.TabIndex = 13
         S4.Text = "S4"
         ' 
         ' S5
         ' 
         S5.AutoSize = True
-        S5.Location = New Point(19, 144)
+        S5.Location = New Point(22, 192)
         S5.Name = "S5"
-        S5.Size = New Size(19, 15)
+        S5.Size = New Size(25, 20)
         S5.TabIndex = 14
         S5.Text = "S5"
         ' 
         ' TextBox1
         ' 
-        TextBox1.Location = New Point(44, 23)
+        TextBox1.Location = New Point(50, 31)
+        TextBox1.Margin = New Padding(3, 4, 3, 4)
         TextBox1.Name = "TextBox1"
-        TextBox1.Size = New Size(100, 23)
+        TextBox1.Size = New Size(114, 27)
         TextBox1.TabIndex = 15
         ' 
         ' TextBox2
         ' 
-        TextBox2.Location = New Point(44, 52)
+        TextBox2.Location = New Point(50, 69)
+        TextBox2.Margin = New Padding(3, 4, 3, 4)
         TextBox2.Name = "TextBox2"
-        TextBox2.Size = New Size(100, 23)
+        TextBox2.Size = New Size(114, 27)
         TextBox2.TabIndex = 16
         ' 
         ' TextBox3
         ' 
-        TextBox3.Location = New Point(44, 81)
+        TextBox3.Location = New Point(50, 108)
+        TextBox3.Margin = New Padding(3, 4, 3, 4)
         TextBox3.Name = "TextBox3"
-        TextBox3.Size = New Size(100, 23)
+        TextBox3.Size = New Size(114, 27)
         TextBox3.TabIndex = 17
         ' 
         ' TextBox4
         ' 
-        TextBox4.Location = New Point(44, 110)
+        TextBox4.Location = New Point(50, 147)
+        TextBox4.Margin = New Padding(3, 4, 3, 4)
         TextBox4.Name = "TextBox4"
-        TextBox4.Size = New Size(100, 23)
+        TextBox4.Size = New Size(114, 27)
         TextBox4.TabIndex = 18
         ' 
         ' TextBox5
         ' 
-        TextBox5.Location = New Point(44, 139)
+        TextBox5.Location = New Point(50, 185)
+        TextBox5.Margin = New Padding(3, 4, 3, 4)
         TextBox5.Name = "TextBox5"
-        TextBox5.Size = New Size(100, 23)
+        TextBox5.Size = New Size(114, 27)
         TextBox5.TabIndex = 19
         ' 
         ' GroupBox1
@@ -271,166 +279,105 @@ Partial Class Ceilings
         GroupBox1.Controls.Add(S4)
         GroupBox1.Controls.Add(TextBox1)
         GroupBox1.Controls.Add(S5)
-        GroupBox1.Location = New Point(12, 133)
+        GroupBox1.Location = New Point(14, 177)
+        GroupBox1.Margin = New Padding(3, 4, 3, 4)
         GroupBox1.Name = "GroupBox1"
-        GroupBox1.Size = New Size(175, 179)
+        GroupBox1.Padding = New Padding(3, 4, 3, 4)
+        GroupBox1.Size = New Size(200, 239)
         GroupBox1.TabIndex = 20
         GroupBox1.TabStop = False
-        GroupBox1.Text = "Side Lock Holes"
+        GroupBox1.Text = "Side Lock Spacing"
         ' 
         ' Button1
         ' 
-        Button1.Location = New Point(196, 292)
+        Button1.Location = New Point(224, 389)
+        Button1.Margin = New Padding(3, 4, 3, 4)
         Button1.Name = "Button1"
-        Button1.Size = New Size(127, 46)
+        Button1.Size = New Size(145, 61)
         Button1.TabIndex = 21
-        Button1.Text = "Generate String"
+        Button1.Text = "Generate QR Code"
         Button1.UseVisualStyleBackColor = True
         ' 
         ' StringBox
         ' 
-        StringBox.Location = New Point(12, 357)
+        StringBox.Location = New Point(14, 476)
+        StringBox.Margin = New Padding(3, 4, 3, 4)
         StringBox.Multiline = True
         StringBox.Name = "StringBox"
-        StringBox.Size = New Size(374, 110)
+        StringBox.Size = New Size(427, 145)
         StringBox.TabIndex = 22
         ' 
         ' PictureBox1
         ' 
         PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Image)
-        PictureBox1.Location = New Point(429, 133)
+        PictureBox1.Location = New Point(525, 173)
+        PictureBox1.Margin = New Padding(3, 4, 3, 4)
         PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(617, 425)
+        PictureBox1.Size = New Size(705, 567)
         PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
         PictureBox1.TabIndex = 23
         PictureBox1.TabStop = False
         ' 
         ' QRCode
         ' 
-        QRCode.Location = New Point(241, 133)
+        QRCode.Location = New Point(275, 177)
+        QRCode.Margin = New Padding(3, 4, 3, 4)
         QRCode.Name = "QRCode"
-        QRCode.Size = New Size(157, 142)
+        QRCode.Size = New Size(179, 189)
         QRCode.SizeMode = PictureBoxSizeMode.Zoom
         QRCode.TabIndex = 24
         QRCode.TabStop = False
         ' 
-        ' DEV
+        ' SoftPartCheckBox
         ' 
         SoftPartCheckBox.AutoSize = True
         SoftPartCheckBox.Checked = True
         SoftPartCheckBox.CheckState = CheckState.Checked
-        SoftPartCheckBox.Location = New Point(345, 292)
+        SoftPartCheckBox.Location = New Point(394, 389)
+        SoftPartCheckBox.Margin = New Padding(3, 4, 3, 4)
         SoftPartCheckBox.Name = "SoftPartCheckBox"
-        SoftPartCheckBox.Size = New Size(80, 24)
+        SoftPartCheckBox.Size = New Size(87, 24)
         SoftPartCheckBox.TabIndex = 99
         SoftPartCheckBox.Text = "Soft Part"
         SoftPartCheckBox.UseVisualStyleBackColor = True
+        ' 
+        ' DEV
+        ' 
         DEV.AutoSize = True
-        DEV.Location = New Point(345, 320)
+        DEV.Location = New Point(394, 427)
+        DEV.Margin = New Padding(3, 4, 3, 4)
         DEV.Name = "DEV"
-        DEV.Size = New Size(70, 19)
+        DEV.Size = New Size(116, 24)
         DEV.TabIndex = 25
-        DEV.Text = "DEV Test"
+        DEV.Text = "Preview Only"
         DEV.UseVisualStyleBackColor = True
         ' 
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Location = New Point(12, 67)
+        Label3.Location = New Point(14, 89)
         Label3.Name = "Label3"
-        Label3.Size = New Size(168, 45)
+        Label3.Size = New Size(210, 60)
         Label3.TabIndex = 26
-        Label3.Text = "It is ok to leave lock locations " & vbCrLf & "empty, if the textbox is empty " & vbCrLf & "the program will ignore it "
-        ' 
-        ' Part
-        ' 
-        Part.AutoSize = True
-        Part.Location = New Point(596, 17)
-        Part.Name = "Part"
-        Part.RightToLeft = RightToLeft.Yes
-        Part.Size = New Size(71, 19)
-        Part.TabIndex = 27
-        Part.Text = "Partition"
-        Part.UseVisualStyleBackColor = True
-        ' 
-        ' Label4
-        ' 
-        Label4.AutoSize = True
-        Label4.Location = New Point(688, 9)
-        Label4.Name = "Label4"
-        Label4.Size = New Size(320, 45)
-        Label4.TabIndex = 28
-        Label4.Text = "Note: For partition Ceilings check this box " & vbCrLf & "and make a Outside Male or Female the partition lenght" & vbCrLf & "Ex. ( STD 4' Partition has a 2' Male side and a 2' Female side)"
-        ' 
-        ' SPL
-        ' 
-        SPL.AutoSize = True
-        SPL.Location = New Point(610, 78)
-        SPL.Name = "SPL"
-        SPL.RightToLeft = RightToLeft.Yes
-        SPL.Size = New Size(57, 19)
-        SPL.TabIndex = 29
-        SPL.Text = "Splice"
-        SPL.UseVisualStyleBackColor = True
-        ' 
-        ' SPLWidth
-        ' 
-        SPLWidth.Enabled = False
-        SPLWidth.Location = New Point(700, 86)
-        SPLWidth.Name = "SPLWidth"
-        SPLWidth.Size = New Size(100, 23)
-        SPLWidth.TabIndex = 30
-        ' 
-        ' SPLLength
-        ' 
-        SPLLength.Enabled = False
-        SPLLength.Location = New Point(847, 86)
-        SPLLength.Name = "SPLLength"
-        SPLLength.Size = New Size(100, 23)
-        SPLLength.TabIndex = 31
-        ' 
-        ' Label5
-        ' 
-        Label5.AutoSize = True
-        Label5.Location = New Point(700, 70)
-        Label5.Name = "Label5"
-        Label5.Size = New Size(71, 15)
-        Label5.TabIndex = 32
-        Label5.Text = "Shear Width"
-        ' 
-        ' Label6
-        ' 
-        Label6.AutoSize = True
-        Label6.Location = New Point(847, 68)
-        Label6.Name = "Label6"
-        Label6.Size = New Size(79, 15)
-        Label6.TabIndex = 33
-        Label6.Text = "Shear Length "
-        ' 
-        ' Label7
-        ' 
-        Label7.AutoSize = True
-        Label7.Location = New Point(688, 112)
-        Label7.Name = "Label7"
-        Label7.Size = New Size(199, 15)
-        Label7.TabIndex = 34
-        Label7.Text = "Note: Horizontal Splices on INT Only"
+        Label3.Text = "S1: flat distance from the edge." & vbCrLf & "S2-S5: spacing from the last lock." & vbCrLf & "Leave a box blank for no lock."
         ' 
         ' Thickness
         ' 
         Thickness.AutoSize = True
-        Thickness.Location = New Point(505, 92)
+        Thickness.Location = New Point(577, 123)
+        Thickness.Margin = New Padding(3, 4, 3, 4)
         Thickness.Name = "Thickness"
-        Thickness.Size = New Size(91, 19)
+        Thickness.Size = New Size(111, 24)
         Thickness.TabIndex = 35
         Thickness.Text = "5"" Thickness"
         Thickness.UseVisualStyleBackColor = True
         ' 
         ' DEVTEXT
         ' 
-        DEVTEXT.Location = New Point(291, 473)
+        DEVTEXT.Location = New Point(333, 631)
+        DEVTEXT.Margin = New Padding(3, 4, 3, 4)
         DEVTEXT.Name = "DEVTEXT"
-        DEVTEXT.Size = New Size(95, 38)
+        DEVTEXT.Size = New Size(109, 51)
         DEVTEXT.TabIndex = 36
         DEVTEXT.Text = "Edit String"
         DEVTEXT.UseVisualStyleBackColor = True
@@ -439,29 +386,21 @@ Partial Class Ceilings
         ' PN
         ' 
         PN.AutoSize = True
-        PN.Location = New Point(12, 339)
+        PN.Location = New Point(14, 452)
         PN.Name = "PN"
-        PN.Size = New Size(41, 15)
+        PN.Size = New Size(53, 20)
         PN.TabIndex = 38
         PN.Text = "Label8"
         PN.Visible = False
         ' 
-        ' Ceilings
+        ' CeilingPanelForm
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1058, 563)
+        ClientSize = New Size(1276, 767)
         Controls.Add(PN)
         Controls.Add(DEVTEXT)
         Controls.Add(Thickness)
-        Controls.Add(Label7)
-        Controls.Add(Label6)
-        Controls.Add(Label5)
-        Controls.Add(SPLLength)
-        Controls.Add(SPLWidth)
-        Controls.Add(SPL)
-        Controls.Add(Label4)
-        Controls.Add(Part)
         Controls.Add(Label3)
         Controls.Add(SoftPartCheckBox)
         Controls.Add(DEV)
@@ -476,8 +415,9 @@ Partial Class Ceilings
         Controls.Add(PanelWidth)
         Controls.Add(Label2)
         Controls.Add(Label1)
-        Name = "Ceilings"
-        Text = "Ceilings"
+        Margin = New Padding(3, 4, 3, 4)
+        Name = "CeilingPanelForm"
+        Text = "Ceiling Panels"
         PanelType.ResumeLayout(False)
         PanelType.PerformLayout()
         MetalType.ResumeLayout(False)
@@ -519,14 +459,6 @@ Partial Class Ceilings
     Friend WithEvents SoftPartCheckBox As CheckBox
     Friend WithEvents DEV As CheckBox
     Friend WithEvents Label3 As Label
-    Friend WithEvents Part As CheckBox
-    Friend WithEvents Label4 As Label
-    Friend WithEvents SPL As CheckBox
-    Friend WithEvents SPLWidth As TextBox
-    Friend WithEvents SPLLength As TextBox
-    Friend WithEvents Label5 As Label
-    Friend WithEvents Label6 As Label
-    Friend WithEvents Label7 As Label
     Friend WithEvents Thickness As CheckBox
     Friend WithEvents DEVTEXT As Button
     Friend WithEvents PN As Label

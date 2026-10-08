@@ -2,7 +2,7 @@ Imports System.Windows.Forms.VisualStyles
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement.Button
 Imports System.Windows.Forms
 
-Public Class Walls
+Public Class WallPanelForm
 
 
     Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles FBCB.CheckedChanged
@@ -78,8 +78,6 @@ Public Class Walls
         Dim QRString As String
         Dim ShearPanelWidth As Double
         Dim ShearPanelHeight As Double
-        Dim FormedPanelWidth As Double
-        Dim FormedPanelHeight As Double
 
         If Not Double.TryParse(NomPanelWidthAsString, ShearPanelWidth) Then
             MessageBox.Show("Please enter a valid number for the Shear Width (BW).")
@@ -91,16 +89,8 @@ Public Class Walls
             Return
         End If
 
-        If Not Double.TryParse(FormedWidth.Text, FormedPanelWidth) Then
-            MessageBox.Show("Please enter a valid number for the Formed Width (PW).")
-            Return
-        End If
-
-        If Not Double.TryParse(FormedHeight.Text, FormedPanelHeight) Then
-            MessageBox.Show("Please enter a valid number for the Formed Height (PL).")
-            Return
-        End If
-
+        Dim FormedPanelWidth As Double = ShearPanelWidth - 1.5625
+        Dim FormedPanelHeight As Double = ShearPanelHeight - 1.125
 
         '*****************************************Corner Punches******************************************************
 
@@ -209,10 +199,10 @@ Public Class Walls
         If B1y = 0 Then
             B1String = String.Empty
         ElseIf B1y > 19 Then 'Making sure the Left Side wont try and reach to far 
-            Dim B1 As PointF = New PointF(ShearPanelHeight - TXoffset, ShearPanelWidth - B1y)
+            Dim B1 As PointF = New PointF(ShearPanelHeight - TXoffset, B1y)
             B1String = $",R7,{B1.X},{B1.Y}"
         Else
-            Dim B1 As PointF = New PointF(ShearPanelHeight - TXoffset, ShearPanelWidth - B1y)
+            Dim B1 As PointF = New PointF(ShearPanelHeight - TXoffset, B1y)
             B1String = $",L7,{B1.X},{B1.Y}"
         End If
 
@@ -221,10 +211,10 @@ Public Class Walls
         If B2y = 0 Then
             B2String = String.Empty
         ElseIf B2y < 19 Then 'Making sure the Right side will not colide the left side
-            Dim B2 As PointF = New PointF(ShearPanelHeight - TXoffset, ShearPanelWidth - B2y)
+            Dim B2 As PointF = New PointF(ShearPanelHeight - TXoffset, B2y)
             B2String = $",L7,{B2.X},{B2.Y}"
         Else
-            Dim B2 As PointF = New PointF(ShearPanelHeight - TXoffset, ShearPanelWidth - B2y)
+            Dim B2 As PointF = New PointF(ShearPanelHeight - TXoffset, B2y)
             B2String = $",R7,{B2.X},{B2.Y}"
         End If
 
@@ -393,18 +383,37 @@ Public Class Walls
             Next
         End If
 
+        ' Lock inputs are spacings. Each edge starts its own running position.
+        AccumulateLockPositions(textBoxValues, 1, 2) ' Top: T1, T2
+        AccumulateLockPositions(textBoxValues, 3, 2) ' Bottom: B1, B2
+        AccumulateLockPositions(textBoxValues, 5, 4) ' Side: S1 through S4
+        AccumulateLockPositions(textBoxValues, 9, 4) ' Double-male side
+
         Return textBoxValues
     End Function
 
-    Private Sub DEVTEXT_Click(sender As Object, e As EventArgs) Handles DEVTEXT.Click
-        ' Create an instance of the Edit_Text form
-        Dim editTextForm As New Edit_Text()
+    Private Shared Sub AccumulateLockPositions(values As Dictionary(Of String, Double), firstTextBox As Integer, lockCount As Integer)
+        Dim position As Double = 0
+        For i As Integer = firstTextBox To firstTextBox + lockCount - 1
+            Dim key As String = $"TextBox{i}"
+            Dim spacing As Double = values(key)
+            ' A missing lock stays zero so it is omitted from the QR string.
+            If spacing <> 0 Then
+                position += spacing
+                values(key) = position
+            End If
+        Next
+    End Sub
 
-        ' Pass the data to the Edit_Text form
+    Private Sub DEVTEXT_Click(sender As Object, e As EventArgs) Handles DEVTEXT.Click
+        ' Create an instance of the QrStringEditorForm form
+        Dim editTextForm As New QrStringEditorForm()
+
+        ' Pass the data to the QrStringEditorForm form
         editTextForm.QRString = TextBox13.Text
         editTextForm.PartNumber = PN.Text
 
-        ' Show the Edit_Text form
+        ' Show the QrStringEditorForm form
         editTextForm.ShowDialog()
     End Sub
 

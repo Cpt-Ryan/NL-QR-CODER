@@ -1,6 +1,52 @@
 Imports QRCoder
 
-Public Class Floors
+Public Class FloorPanelForm
+    Private defaultFloorDiagram As Image
+    Private interiorCenterDiagram As Bitmap
+    Private interiorOutsideDiagram As Bitmap
+    Private exteriorDiagram As Bitmap
+
+    Public Sub New()
+        InitializeComponent()
+        defaultFloorDiagram = PictureBox1.Image
+        interiorCenterDiagram = LoadFloorDiagram("QR_Code_Application.Images.FloorInteriorCenter.png")
+        interiorOutsideDiagram = LoadFloorDiagram("QR_Code_Application.Images.FloorInteriorOutside.png")
+        exteriorDiagram = LoadFloorDiagram("QR_Code_Application.Images.CeilingExterior.png")
+        UpdateFloorDiagram()
+    End Sub
+
+    Private Shared Function LoadFloorDiagram(resourceName As String) As Bitmap
+        Using stream = GetType(FloorPanelForm).Assembly.GetManifestResourceStream(resourceName)
+            Using source As Image = Image.FromStream(stream)
+                Return New Bitmap(source)
+            End Using
+        End Using
+    End Function
+
+    Private Sub FloorDiagramSelection_CheckedChanged(sender As Object, e As EventArgs) Handles INT.CheckedChanged, EXT.CheckedChanged, CNT.CheckedChanged, OSMA.CheckedChanged, OSFE.CheckedChanged
+        UpdateFloorDiagram()
+    End Sub
+
+    Private Sub UpdateFloorDiagram()
+        ' Selection events can fire before InitializeComponent has finished.
+        If interiorCenterDiagram Is Nothing OrElse interiorOutsideDiagram Is Nothing OrElse exteriorDiagram Is Nothing Then Return
+        If EXT.Checked Then
+            PictureBox1.Image = exteriorDiagram
+        ElseIf INT.Checked AndAlso CNT.Checked Then
+            PictureBox1.Image = interiorCenterDiagram
+        ElseIf INT.Checked AndAlso (OSMA.Checked OrElse OSFE.Checked) Then
+            PictureBox1.Image = interiorOutsideDiagram
+        Else
+            PictureBox1.Image = defaultFloorDiagram
+        End If
+    End Sub
+
+    Private Sub FloorPanelForm_Disposed(sender As Object, e As EventArgs) Handles Me.Disposed
+        If interiorCenterDiagram IsNot Nothing Then interiorCenterDiagram.Dispose()
+        If interiorOutsideDiagram IsNot Nothing Then interiorOutsideDiagram.Dispose()
+        If exteriorDiagram IsNot Nothing Then exteriorDiagram.Dispose()
+    End Sub
+
     Private Sub OSFE_CheckedChanged(sender As Object, e As EventArgs) Handles OSFE.CheckedChanged
         If OSFE.Checked Then
             GroupBox1.Enabled = False
@@ -186,7 +232,6 @@ Public Class Floors
         Dim SideLockString As String
 
         Dim YValue As Double = 1.3125
-        Dim SXoffset As Double = 3.21875
 
         Dim S1 As PointF
         Dim S1String As String
@@ -194,7 +239,7 @@ Public Class Floors
         If S1x = 0 Then
             S1String = String.Empty
         Else
-            S1 = New PointF(S1x - SXoffset, YValue)
+            S1 = New PointF(S1x, YValue)
             S1String = $",L5,{S1.X},{S1.Y}"
         End If
 
@@ -204,7 +249,7 @@ Public Class Floors
         If S2x = 0 Then
             S2String = String.Empty
         Else
-            S2 = New PointF(S2x - SXoffset, YValue)
+            S2 = New PointF(S2x, YValue)
             S2String = $",L5,{S2.X},{S2.Y}"
         End If
 
@@ -214,7 +259,7 @@ Public Class Floors
         If S3x = 0 Then
             S3String = String.Empty
         Else
-            S3 = New PointF(S3x - SXoffset, YValue)
+            S3 = New PointF(S3x, YValue)
             S3String = $",L5,{S3.X},{S3.Y}"
         End If
 
@@ -224,7 +269,7 @@ Public Class Floors
         If S4x = 0 Then
             S4String = String.Empty
         Else
-            S4 = New PointF(S4x - SXoffset, YValue)
+            S4 = New PointF(S4x, YValue)
             S4String = $",L5,{S4.X},{S4.Y}"
         End If
 
@@ -234,7 +279,7 @@ Public Class Floors
         If S5x = 0 Then
             S5String = String.Empty
         Else
-            S5 = New PointF(S5x - SXoffset, YValue)
+            S5 = New PointF(S5x, YValue)
             S5String = $",L5,{S5.X},{S5.Y}"
         End If
 
@@ -262,7 +307,7 @@ Public Class Floors
         If INT.Checked Then
             QRString = (PartNumber & "-Floor" & Constants & SideLockString & INTCornerNotchString)
         Else
-            QRString = (PartNumber & "-Floors" & Constants & EXTCornerNotchString)
+            QRString = (PartNumber & "-FloorPanelForm" & Constants & EXTCornerNotchString)
         End If
 
         StringBox.Text = (QRString)
@@ -307,18 +352,29 @@ Public Class Floors
             Next
         End If
 
+        ' Inputs are spacings; blank/zero boxes remain omitted from the QR string.
+        Dim position As Double = 0
+        For i As Integer = 1 To 5
+            Dim key As String = $"TextBox{i}"
+            Dim spacing As Double = textBoxValues(key)
+            If spacing <> 0 Then
+                position += spacing
+                textBoxValues(key) = position
+            End If
+        Next
+
         Return textBoxValues
     End Function
 
     Private Sub DEVTEXT_Click(sender As Object, e As EventArgs) Handles DEVTEXT.Click
-        ' Create an instance of the Edit_Text form
-        Dim editTextForm As New Edit_Text()
+        ' Create an instance of the QrStringEditorForm form
+        Dim editTextForm As New QrStringEditorForm()
 
-        ' Pass the data to the Edit_Text form
+        ' Pass the data to the QrStringEditorForm form
         editTextForm.QRString = StringBox.Text
         editTextForm.PartNumber = PN.Text
 
-        ' Show the Edit_Text form
+        ' Show the QrStringEditorForm form
         editTextForm.ShowDialog()
     End Sub
 

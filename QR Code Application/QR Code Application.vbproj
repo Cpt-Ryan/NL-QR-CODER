@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -53,4 +53,55 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Forms\MainForm.vb"><SubType>Form</SubType></Compile>
+    <Compile Update="Forms\MainForm.Designer.vb"><DependentUpon>MainForm.vb</DependentUpon></Compile>
+    <EmbeddedResource Update="Forms\MainForm.resx"><DependentUpon>MainForm.vb</DependentUpon><LogicalName>QR_Code_Application.MainForm.resources</LogicalName></EmbeddedResource>
+    <Compile Update="Forms\Panels\CeilingPanelForm.vb"><SubType>Form</SubType></Compile>
+    <Compile Update="Forms\Panels\CeilingPanelForm.Designer.vb"><DependentUpon>CeilingPanelForm.vb</DependentUpon></Compile>
+    <EmbeddedResource Update="Forms\Panels\CeilingPanelForm.resx"><DependentUpon>CeilingPanelForm.vb</DependentUpon><LogicalName>QR_Code_Application.CeilingPanelForm.resources</LogicalName></EmbeddedResource>
+    <Compile Update="Forms\Panels\CornerPanelForm.vb"><SubType>Form</SubType></Compile>
+    <Compile Update="Forms\Panels\CornerPanelForm.Designer.vb"><DependentUpon>CornerPanelForm.vb</DependentUpon></Compile>
+    <EmbeddedResource Update="Forms\Panels\CornerPanelForm.resx"><DependentUpon>CornerPanelForm.vb</DependentUpon><LogicalName>QR_Code_Application.CornerPanelForm.resources</LogicalName></EmbeddedResource>
+    <Compile Update="Forms\Panels\FloorPanelForm.vb" />
+    <Compile Update="Forms\Panels\FloorPanelForm.Designer.vb"><DependentUpon>FloorPanelForm.vb</DependentUpon></Compile>
+    <EmbeddedResource Update="Forms\Panels\FloorPanelForm.resx"><DependentUpon>FloorPanelForm.vb</DependentUpon><LogicalName>QR_Code_Application.FloorPanelForm.resources</LogicalName></EmbeddedResource>
+    <Compile Update="Forms\Panels\TeePanelForm.vb"><SubType>Form</SubType></Compile>
+    <Compile Update="Forms\Panels\TeePanelForm.Designer.vb"><DependentUpon>TeePanelForm.vb</DependentUpon></Compile>
+    <EmbeddedResource Update="Forms\Panels\TeePanelForm.resx"><DependentUpon>TeePanelForm.vb</DependentUpon><LogicalName>QR_Code_Application.TeePanelForm.resources</LogicalName></EmbeddedResource>
+    <Compile Update="Forms\Panels\WallPanelForm.vb" />
+    <Compile Update="Forms\Panels\WallPanelForm.Designer.vb"><DependentUpon>WallPanelForm.vb</DependentUpon></Compile>
+    <EmbeddedResource Update="Forms\Panels\WallPanelForm.resx"><DependentUpon>WallPanelForm.vb</DependentUpon><LogicalName>QR_Code_Application.WallPanelForm.resources</LogicalName></EmbeddedResource>
+    <Compile Update="Forms\QrStringEditorForm.vb"><SubType>Form</SubType></Compile>
+    <Compile Update="Forms\QrStringEditorForm.Designer.vb"><DependentUpon>QrStringEditorForm.vb</DependentUpon></Compile>
+    <EmbeddedResource Update="Forms\QrStringEditorForm.resx"><DependentUpon>QrStringEditorForm.vb</DependentUpon><LogicalName>QR_Code_Application.QrStringEditorForm.resources</LogicalName></EmbeddedResource>
+    <Compile Update="Forms\Dialogs\FoamDateDialog.vb"><SubType>Form</SubType></Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="appsettings.json" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <None Update="appsettings.example.json" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Int OS Ceiling.png">
+      <LogicalName>QR_Code_Application.Images.CeilingInteriorOutside.png</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Int CNT Ceiling.png">
+      <LogicalName>QR_Code_Application.Images.CeilingInteriorCenter.png</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Ext Ceiling.png">
+      <LogicalName>QR_Code_Application.Images.CeilingExterior.png</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Int CNT Floor.png">
+      <LogicalName>QR_Code_Application.Images.FloorInteriorCenter.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\INT OS Floor.png">
+      <LogicalName>QR_Code_Application.Images.FloorInteriorOutside.png</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
 </Project>

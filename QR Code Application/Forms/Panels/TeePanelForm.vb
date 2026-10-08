@@ -1,4 +1,4 @@
-Public Class Tees
+Public Class TeePanelForm
     Private Sub RadioButton2_CheckedChanged(sender As Object, e As EventArgs) Handles FETEERB.CheckedChanged
         If FETEERB.Checked Then
             GroupBox3.Enabled = False
@@ -549,14 +549,14 @@ Public Class Tees
     End Function
 
     Private Sub DEVTEXT_Click(sender As Object, e As EventArgs) Handles DEVTEXT.Click
-        ' Create an instance of the Edit_Text form
-        Dim editTextForm As New Edit_Text()
+        ' Create an instance of the QrStringEditorForm form
+        Dim editTextForm As New QrStringEditorForm()
 
-        ' Pass the data to the Edit_Text form
+        ' Pass the data to the QrStringEditorForm form
         editTextForm.QRString = StringBox.Text
         editTextForm.PartNumber = PN.Text
 
-        ' Show the Edit_Text form
+        ' Show the QrStringEditorForm form
         editTextForm.ShowDialog()
     End Sub
 
